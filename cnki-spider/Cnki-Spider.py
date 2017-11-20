@@ -1,5 +1,6 @@
 import select
 from selenium import webdriver
+from selenium.common.exceptions import UnexpectedAlertPresentException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
@@ -21,7 +22,7 @@ class CnkiSpider:
         self.driver = webdriver.Firefox(executable_path="/Users/liwei/geckodriver")
 
     def select_fill_condition(self, driver):
-        '''让驱动帮我们 1、设置搜索条件 2、点击提交按钮'''
+        '''让驱动帮我们 1、设置搜索条件 2、点击提交按钮 3、点击每页显示 50 条数据'''
         # 将检索条件下列列表 1 设置为"全文"
         select1 = Select(driver.find_element_by_id('txt_1_sel'))
         select1.select_by_visible_text("全文")
@@ -57,6 +58,7 @@ class CnkiSpider:
                 href = row.select('a')[0].get('href')
                 title = row.select('a')[0].text
                 writer.writerow(list((order_number, self.handle_url(href), title)))
+
 
     def handle_url(self, url):
         new_str = url[4:]
@@ -98,31 +100,41 @@ class CnkiSpider:
         else:
             print('------ 走到这里很可能是遇到验证码了 ------')
             try:
+                js = 'window.scrollTo(0,0);'
+                self.driver.execute_script(js)
                 check_code_input = self.driver.find_element_by_id("CheckCode")
                 if check_code_input:
                     check_code = input('请输入您看到的验证码：')
                     check_code_input.send_keys(check_code)
                     submit_button = self.driver.find_element_by_xpath("//input[@type='button']")
                     submit_button.click()
-                    self.crawl_next_page(self.driver.page_source)
+                    try:
+                        self.crawl_next_page(self.driver.page_source)
+                    except UnexpectedAlertPresentException as e:
+                        print('--- 此时用户信息失效了 ----，须要重新点击搜索')
+                        alert = self.driver.switch_to.alert
+                        alert.accept()
             except Exception as e:
                 print(e)
                 self.crawl_next_page(self.driver.page_source)
-
-
-
 
     def crawl(self, target_url):
         self.driver.get(url=target_url)
         self.driver.maximize_window()
         self.select_fill_condition(self.driver)
-        # 强制等待 5 秒，使得搜索结果出现（考虑是否可以写成显式的等待）
 
-        time.sleep(10)
+        # 强制等待 10 秒，使得搜索结果出现（考虑是否可以写成显式的等待）
+        time.sleep(5)
+        self.driver.switch_to.frame('iframeResult')
+        # 点击每页显示 50 条那个链接
+        self.driver.find_element_by_xpath("//div[@id='id_grid_display_num']/a[last()]").click()
+        # 网页正文全文高： document.body.scrollHeight;
+
         js = 'window.scrollTo(0,document.body.scrollHeight);'
         self.driver.execute_script(js)
 
-        self.driver.switch_to.frame('iframeResult')
+
+
         self.parse_content_url(self.driver.page_source)
 
         self.crawl_next_page(self.driver.page_source)

@@ -1,53 +1,1043 @@
-<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body style=" text-align:center"><p><label>请输入验证码：</label><input id="CheckCode" name="CheckCode" type="text"><input value="提交" onclick="javascript:CheckCodeSubmit()" type="button"></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/kns/checkcode.aspx?t='+Math.random()" id="CheckCodeImg" name="CheckCodeImg" style="CURSOR: pointer" onclick="this.src='/kns/checkcode.aspx?t='+Math.random()" title="看不清换一张"></p>
-
-
-
-
-<title>
-
-</title>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>概览页</title>
+    <meta content="no-cache" http-equiv="pragma">
+    <link rel="stylesheet" type="text/css" href="http://piccache.cnki.net/kdn/kns/css/gb_min/BriefComp.min.css?v=">
+    <script type="text/javascript" src="http://piccache.cnki.net/kdn/kns/script/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="http://piccache.cnki.net/kdn/kns/script/min/gb.BriefPage.min.js?v=D59787997F3B8FCE"></script>
     
-   <script type="text/javascript">
-       function CheckCodeSubmit() {
-           var cboj = document.getElementById("CheckCode");
-           var value = "";
-           if (cboj)
-               value = cboj.value;
-
-           if (value) {
-               var url = window.location.href;
-               url = url.replace(window.location.hash, "");
-               url = SetQueryStringByName(url, "vericode", value);
-               window.location = url;
-           }
-       }
-       function SetQueryStringByName(query, name, sValue) {
-           if (query) {
-               var result = query.match(new RegExp("([\?\&]+)" + name + "=[^\&]*", "i"));
-               var sRe = query;
-               if (result != null) {
-                   sRe = query.replace(result[0], result[1] + name + "=" + encodeURI(sValue));
-               }
-               else {
-                   sRe = query + "&" + name + "=" + sValue;
-               }
-               return sRe;
-           }
-           return "";
-       }
-
-
-   </script>
-
-
-    <form name="form1" method="post" action="vericode.aspx?rurl=%2fkns%2fbrief%2fbrief.aspx%3fcurpage%3d97%26RecordsPerPage%3d20%26QueryID%3d3%26ID%3d%26turnpage%3d1%26tpagemode%3dL%26dbPrefix%3dCCND%26Fields%3d%26DisplayMode%3dlistmode%26PageName%3dASP.brief_result_aspx&amp;skey=CheckMaxTurnPageCount" id="form1">
+<script type="text/javascript" src="http://kns.cnki.net/KRS/scripts/Recommend.js"></script></head>
+<body onload="BriefOnload();" onkeydown="grabEvent(event);" class="rootw" topmargin="0" leftmargin="0">
+    <script type="text/javascript" src="http://piccache.cnki.net/kdn/kns/script/WideScreen.js"></script>
+    <form name="ctl00" method="post" action="brief.aspx?curpage=120&amp;RecordsPerPage=50&amp;QueryID=4&amp;ID=&amp;turnpage=1&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;sKuaKuID=4" id="ctl00">
 <div>
-<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2MTY2ODcyMjlkZBiq1o2PpYjupbxz+wgE+kajW9hKIsP0pwMe35S0uWme" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwMjEzMjM0NDQPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCAWRkFUnlzL67PJ732+B92mn+7Gnt2TiRI1Jktu/5SQeLy1w=" type="hidden">
 </div>
 
-    <div>    
-    </div>
+<div>
+
+	<input name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAIdIRdFWpKA4BYUdQL6KgtZbgvJz/EQj5rQumcYDL2xlhbi/alS8mbfX8EEY1efJIm0syhzU+O3mZ5ahqVI454K" type="hidden">
+</div>
+        <input id="SqlValue" name="SqlValue" value="2827E4B6502D871094C03BE7F72728F4B5AF99EB3A74E78A63BB63268C34F5B8355ADC59C51F21C0DC3580AEC609D22F77A4B615269D4571A6825EBD8306986EAD29667488C754FDF8C9300274868767C6668F21C0EE8365492AED066B9A340601074D4518E7D59F314388E9E5B06B29881C138083B4AC8D151487344FB32636DDEEBB6B29844B048F526A02792EC21A1533392563D852B7766C508206D0988C84D2F8D5EBFBEDB51B0718278ABED202001B1BF6B5D1250BF32572B13A95E0B8277874AEED612A63C380C0C00357850F061C1EF2345C4688677C2A0DA99A214329C76CF9F3C096F5F73FC69A0B7CE50157EFD88BC0CB908AF823FBA737E099C35808F8AFB81148D09871AAFD8FAEC5B4891AAAE517BB4A7C6BEFF9993550C21E3FF7D72C01FB10F242DB8423C4A5721DDD50A178838727DFB88A16D2C98EE5A137F737952644B6497613F27D9F81637F6225F1DA03BD1B4978BCD8912AF0322FCF0D737DBB135DB2EF8E24CE3CCDB348722C34706B8ABF1BF7390840762D6ED48FE433AACC2A9373DFA86764241C97217E7E3C62540BA34412CD68765ED00CB4D0E3C3ADC1135995CF91BA577EDB7378" type="hidden">
+        <input id="txtValue" value="" type="hidden">
+        <input id="LoginState" value="0" type="hidden">
+        <input id="userid" value="WEEvREcwSlJHSldRa1FhcTdWZDhML2VjWFFNUGtUQlk1VElPR3RLb3lQYz0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4ggI8Fm4gTkoUKaID8j8gFw!!" type="hidden">
+        <input id="resultcount" name="resultcount" value="" type="hidden">
+        <input id="crrsUrl" name="crrsUrl" value="http://kns.cnki.net/CRRS/" type="hidden">
+        <input id="krsUrl" name="krsUrl" value="http://kns.cnki.net/KRS" type="hidden">
+        <input id="crrsPath" name="crrsPath" value="http://kns.cnki.net/CRRS/" type="hidden">
+        <input id="bathPath" name="bathPath" value="/kns" type="hidden">
+        <input id="dbCode" name="dbCode" value="CCND" type="hidden">
+        <input id="deliveryPath" name="deliveryPath" value="" type="hidden">
+        <input id="mycnkiUrl" name="mycnkiUrl" value="http://kns.cnki.net/KMycnki/Mycnki/index/" type="hidden">
+        <input id="kredisServerPath" name="kredisServerPath" value="http://kns.cnki.net" type="hidden">
+        <input id="heatjson" name="heatjson" value="" type="hidden">
+             <input id="fengmianPath" name="heatjson" value="http://c61.cnki.net" type="hidden">
+         <input id="crfdpicPath" name="heatjson" value="http://gongjushu.cnki.net/CRFDPIC/" type="hidden">
+        <script type="text/javascript">
+            function ShowGroup(p1, p2, p3) {
+                return parent.ShowGroup(p1, p2, p3);
+            }
+            
+    
+            $(document).ready(function () {
+              
+                qkInfoCall();
+                setAuShow();
+                //GetHeat();
+                window.parent.HideWaitDiv();
+                SetFrameHeight();
+            });
+
+        </script>
+        <script language="JavaScript">
+<!--
+	function OnChangePagenum(pagenum)
+	{
+		return false;
+	}
+//-->
+</script>
+
+<script language="JavaScript">
+<!--
+function updateCounter() {
+}
+function numMarked() {
+company =	"cnki";
+cookie = new String(getCookie("FileNameS"));
+if ((cookie.substring(0,cookie.indexOf(":")) != company) || cookie.length <= 5) {
+return 0;
+}
+a=cookie.split(",");
+			return a.length;
+}
+function getErrorMsg(count) {
+count = count || '50';
+var msg = '';
+if (!window.localStorage || !window.sessionStorage) {
+    msg = '如要选择更多，请您升级浏览器到最新版本。';
+} else {
+    msg = '不能超过'+count+'个,若要重新选择,请按清除按钮,再进行选取操作';
+}
+return msg;
+}
+function ClickOpen(url) {
+if (numMarked() == 0){
+alert('请先选取文献');
+return;}
+windowOpener(url);
+}
+function checkAll(form,stype) {
+var limit = 500;
+if(!window.localStorage || !window.sessionStorage){ limit = 50;};
+e	= document.forms[0].elements;
+for (i=0;	i<e.length;	i++) {
+if (e[i].type	== "checkbox"	 &&	e[i].name == "FileNameS")	{
+if (numMarked()>= limit) {
+this.checked=false;
+alert(getErrorMsg(limit));
+return false;
+}	else {
+if (e[i].checked==false) {
+if(document.cookie.length + e[i].value.length > 4096 ){
+    alert(getErrorMsg(limit));
+    return false;}
+addToCookie(e[i].value);
+e[i].checked=true;
+}
+}
+}
+}
+updateCounter();
+return true;
+}
+function clearAllMarks(form) {
+e	= document.forms[0].elements;
+for (i=0;	i<e.length;	i++) {
+if (e[i].type	== "checkbox"	&&	e[i].name == "FileNameS" ) {
+removeFromCookie(e[i].value);
+e[i].checked=false;
+}
+}
+updateCounter();
+}
+		function getCookie(Name,stype) {
+if (window.localStorage || window.sessionStorage) {   if(stype=='2') return window.sessionStorage.getItem(Name);    return window.localStorage.getItem(Name);}var search = Name	+ "=";
+if (document.cookie.length > 0) {
+offset = document.cookie.indexOf(search);
+if (offset !=	-1)	{
+offset +=	search.length;
+end =	document.cookie.indexOf(";", offset);
+if (end == -1)
+end =	document.cookie.length;
+return unescape(document.cookie.substring(offset,	end));
+}
+}
+}
+function setCookie(name, value,stype) {
+if (window.localStorage || window.sessionStorage){
+  if(stype == '2'){  window.sessionStorage.setItem(name, value );}
+  else{  localStorage.setItem(name, value );}
+    return true;
+}
+var cookieValue = name + "=" + escape(value)+";"+"path=/";
+if(cookieValue.length  > 4096 ){
+    return false;}
+document.cookie =	cookieValue ;
+return true;}
+function getTableNameFileNames(s){
+ if (!s || s.length <= 0) {  return ''; }
+ var tempArr = s.split('!');
+ if (tempArr.length == 4) {
+return tempArr[0] + '!' + tempArr[1];}
+return '';}
+function handlerRegexSpcileChar(input) {
+  if (input) {
+     return input.replace(/[\(|\)|\+|\.|\*]/g, function (m) { return '\\' + m;});
+  }
+  return input;
+}
+function addToCookie(v) {
+company =	"cnki";
+cookie= new String(getCookie("FileNameS"));
+if ((cookie.length > 0) && ((cookie.substring(0,cookie.indexOf(':')) == company))){
+ var tableFileNames = getTableNameFileNames(v);
+ tableFileNames = handlerRegexSpcileChar(tableFileNames);
+ var re = new RegExp(tableFileNames + '[^,]*', 'ig');
+if (re.test(cookie)) return;
+if (cookie.length	- 1	== cookie.indexOf(':'))	{
+setCookie("FileNameS", cookie+v);
+}	else {
+				   setCookie("FileNameS",	cookie+","+v);
+			   }
+}	else {
+setCookie("FileNameS", company + ":" + v);
+}
+}
+function removeFromCookie(v) {
+var company =	"cnki";
+var cookie = new String(getCookie("FileNameS"));
+if (cookie.substring(0,cookie.indexOf(':')) == company) {
+cookie = cookie.substring(cookie.indexOf(':')+1,cookie.length);
+ var deleteV = function (input, value) {
+re = new RegExp("^"+handlerRegexSpcileChar(value)+"$");
+input=input.replace(re,	"");
+re = new RegExp("^"+handlerRegexSpcileChar(value)+",");
+input=input.replace(re,	"");
+re = new RegExp(","+handlerRegexSpcileChar(value)+"$");
+input=input.replace(re,	"");
+re = new RegExp(","+handlerRegexSpcileChar(value)+",");
+input=input.replace(re,	",");
+ return input;
+}
+var tableFileNames = getTableNameFileNames(v);
+ tableFileNames = handlerRegexSpcileChar(tableFileNames);
+if (tableFileNames && tableFileNames.length <= 0){ return; }
+var re = new RegExp(tableFileNames + '[^,]*', 'ig');
+var tempMaths = cookie.match(re);
+if (tempMaths && tempMaths.length > 0) {
+    for (var i = 0; i < tempMaths.length; i++){
+        cookie = deleteV(cookie, tempMaths[i]);
+    }
+}
+}	else { cookie =	""; }
+if (cookie!="")	{ setCookie("FileNameS", company + ":" + cookie);}
+else { setCookie("FileNameS", company +	":");}
+}
+function checkMark(c)	{
+var limit = 500;
+if(!window.localStorage || !window.sessionStorage){ limit = 50;};
+if (c.checked	== true) {
+if (numMarked()>=limit) {
+alert(getErrorMsg(limit));
+c.checked=false;
+}	else {
+if(document.cookie.length + c.value.length > 4096 ){
+    c.checked=false;
+    alert(getErrorMsg(limit));
+    return false;}
+addToCookie(c.value);
+}
+}else	{
+removeFromCookie(c.value);
+}
+updateCounter();
+}
+//-->
+</script>
+<script language="javascript">
+var newWindow	= null
+var newWindow2 = null
+function windowOpener(loadpos)
+{
+newWindow	= window.open(loadpos,"_blank","toolbar=yes,resizable=yes,scrollbars=yes,dependent,location=yes,status=yes,menubar=yes,width=550,height=450");
+newWindow.focus();
+}
+function windowOpener2(loadpos)
+{
+newWindow2 = window.open(loadpos,"","toolbar=yes,resizable=yes,scrollbars=yes,dependent,location=yes,status=yes,menubar=yes,width=550,height=450");
+}
+</script>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor=""><tbody><tr><td><table id="J_ORDER" class="divsearch1" width="100%" cellspacing="0" cellpadding="0" border="0" align="left"><tbody><tr><td><table class="taxis" cellspacing="4" cellpadding="2" border="0"><tbody><tr><td align="left"><span class="groupsorttitle">排序:</span><span class="Btn5"><a class="cur" href="/kns/brief/brief.aspx?&amp;RecordsPerPage=50&amp;ID=&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;sorttype=(FFD%2c%27RANK%27)+desc&amp;queryid=4" title="只在800万条记录以内有效">主题排序<img src="../images/gb/icon-d.gif"></a></span><span class="Btn5"><a href="/kns/brief/brief.aspx?&amp;RecordsPerPage=50&amp;ID=&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;sorttype=(%e6%97%a5%e6%9c%9f%2c%27DATE%27)+desc&amp;queryid=4">报纸日期</a></span></td><td style="width:30%;" align="right"><div class="DivDisplayMode"><span class="LBcur"><a onclick="DisplayModeRadioBLOnChange('custommode'); return false;" href="javascript:void(0);">切换到摘要</a></span></div>
+<div id="id_grid_display_num" class="class_grid_display_num">
+每页显示：<a href="/kns/brief/brief.aspx?&amp;ID=&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;queryid=4&amp;skuakuid=4&amp;turnpage=1&amp;recordsperpage=10">10</a> <a href="/kns/brief/brief.aspx?&amp;ID=&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;queryid=4&amp;skuakuid=4&amp;turnpage=1&amp;recordsperpage=20">20</a> <a href="/kns/brief/brief.aspx?&amp;ID=&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;queryid=4&amp;skuakuid=4&amp;turnpage=1&amp;recordsperpage=50"><font class="numNow">50</font></a></div></td></tr></tbody></table></td></tr><tr><td><table class="pageBar_top" width="100%" cellspacing="0" cellpadding="0" border="0" align="left"><tbody><tr><td align="left"><div class="SavePoint"><span class="cout">已选文献：<em title="点击查看所选文献" id="selectCount" name="selectCount" onclick="if( zeroSelectTip()){saveAs();} return false;">0</em><a href="javascript:void(0);" onclick="ClearAll(false);" class="zero">清除</a></span><a href="javascript:void(0);" onclick="if( zeroSelectTip()){exportBatch();} return false;" title="批量下载所选文献"> 批量下载</a><a href="javascript:void(0);" onclick="if( zeroSelectTip()){exportArtical(0);} return false;" title="生成、导出所选文献不同的引文格式"> 导出/参考文献</a><div id="analysisBox" class="imiSel"><span class="imiSelCho">计量可视化分析</span><ul class="imiSelDp" style="display:none;"><li><a href="javascript:void(0);" onclick="anisysartical(1); return false;" title="对已选文献进行分析">已选文献分析</a></li><li><a href="javascript:void(0);" onclick="anisysresult();return false;" title="对全部检索结果集进行分析">全部检索结果分析</a></li></ul></div></div></td><td align="right"><div class="pageBar_min"><div class="pagerTitleCell"><span id="lbPagerTitle" name="lbPagerTitle" class="pagerTitle"></span>&nbsp;找到&nbsp;6,554&nbsp;条结果&nbsp;</div><span class="countPageMark">120/120</span><span class="topTurnSpan"><a id="Page_prev" href="?curpage=119&amp;RecordsPerPage=50&amp;QueryID=4&amp;ID=&amp;turnpage=1&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;sKuaKuID=4#J_ORDER&amp;" title="键盘的“← →”可以实现快速翻页">上一页</a></span></div></td></tr></tbody></table>
+
+
+</td></tr></tbody></table></td></tr><tr><td><table class="GridTableContent" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#969799" align="left">
+<tbody><tr class="GTContentTitle">
+<td style=" " width="48px" align="left">
+<input name="selectCheckbox" id="selectCheckbox" onclick="if(this.checked){this.checked = checkAll('this.form');}else{clearAllMarks(this.form);}" type="checkbox"></td>
+<td style=" " align="center">
+题名</td>
+<td style=" " width="120px" align="center">
+作者</td>
+<td style=" " width="10%" align="center">
+报纸名称</td>
+<td style=" " width="76px" align="center">
+日期</td>
+<td style=" " width="60px" align="center">
+下载</td>
+<td style=" " width="28px" align="center">
+阅读</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CSWB200601250121!5951!4" onclick="checkMark(this)" type="checkbox">5951</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5951&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CSWB200601250121" target="_blank">电子百强收入上升利润大降</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%b5%9b%e8%bf%aa&amp;scode=" target="knet">赛迪</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%92%9f%e5%92%8c&amp;scode=" target="knet">钟和</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CSWB&amp;JourName=%e4%b8%ad%e5%9b%bd%e7%a8%8e%e5%8a%a1%e6%8a%a5&amp;PYKM=CSWB">中国税务报</a>
+      </td>
+      <td>
+        2006-01-25
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBdVU1YnYJpFNBlUb3l0MnVFendFVnBVVOZXMZtiQBJ1brRma3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">3</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCSWB200601250121%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CTCB200602230021!5952!4" onclick="checkMark(this)" type="checkbox">5952</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5952&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CTCB200602230021" target="_blank">赢得市场竞争  关键要靠创新</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%b4%be%e9%9d%92%e8%8a%b3&amp;scode=" target="knet">贾青芳</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%8b%8f%e9%93%ad&amp;scode=" target="knet">苏铭</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CTCB&amp;JourName=%e4%b8%ad%e5%9b%bd%e7%89%b9%e4%ba%a7%e6%8a%a5&amp;PYKM=CTCB">中国特产报</a>
+      </td>
+      <td>
+        2006-02-23
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3R3c1cUbYlFcy12biJXM5gjNGNHWkVEezAlN6xmWZllTapla3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">6</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCTCB200602230021%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CWHB200603150031!5953!4" onclick="checkMark(this)" type="checkbox">5953</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5953&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CWHB200603150031" target="_blank">企业效益光靠管理出不来</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e5%bb%ba&amp;scode=" target="knet">王建</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CWHB&amp;JourName=%e4%b8%ad%e5%9b%bd%e6%96%87%e5%8c%96%e6%8a%a5&amp;PYKM=CWHB">中国文化报</a>
+      </td>
+      <td>
+        2006-03-15
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRlkNxAlMCNkMmNzYEl0Uq9iNDhmT65mVBJDculGSoV1YRZka3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCWHB200603150031%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CWHB200610110051!5954!4" onclick="checkMark(this)" type="checkbox">5954</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5954&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CWHB200610110051" target="_blank">上班跳舞、洗脚——中国企业能学Google吗</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e6%9d%8e%e7%8e%89%e5%9b%bd&amp;scode=" target="knet">李玉国</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CWHB&amp;JourName=%e4%b8%ad%e5%9b%bd%e6%96%87%e5%8c%96%e6%8a%a5&amp;PYKM=CWHB">中国文化报</a>
+      </td>
+      <td>
+        2006-10-11
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPnl3bllTUyYzYyxkTxsiN4clcxR3TwpkSEdjM3d3QyAzKFdzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">10</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCWHB200610110051%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CWHB200612270071!5955!4" onclick="checkMark(this)" type="checkbox">5955</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5955&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CWHB200612270071" target="_blank">明星级企业家如何打造</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%83%ad%e7%b4%a0%e5%a8%a5&amp;scode=" target="knet">郭素娥</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CWHB&amp;JourName=%e4%b8%ad%e5%9b%bd%e6%96%87%e5%8c%96%e6%8a%a5&amp;PYKM=CWHB">中国文化报</a>
+      </td>
+      <td>
+        2006-12-27
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPnZHcW50Mwk0YwNVNvUkSnV1SJVVaFFnTVFlcqFDZ5VmUmZFO042Mu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">3</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCWHB200612270071%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CXJR20060113A031!5956!4" onclick="checkMark(this)" type="checkbox">5956</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5956&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CXJR20060113A031" target="_blank">影响中国企业的八大管理实践</a>
+      </td>
+       <td class="author_flag"></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CXJR&amp;JourName=%e4%b8%ad%e5%9b%bd%e5%9f%8e%e4%b9%a1%e9%87%91%e8%9e%8d%e6%8a%a5&amp;PYKM=CXJR">中国城乡金融报</a>
+      </td>
+      <td>
+        2006-01-13
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBpVWvYlarZFZ4VkYF1WdnVkTKNla3JlSxA3TTJ0RBJ1brRma3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCXJR20060113A031%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CXJR20060428A043!5957!4" onclick="checkMark(this)" type="checkbox">5957</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5957&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CXJR20060428A043" target="_blank">朱相桂：视今天为落后</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e6%b1%89&amp;scode=" target="knet">王汉</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%bd%97%e8%bf%9b&amp;scode=" target="knet">罗进</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%90%b4%e6%9b%99%e4%b8%9c&amp;scode=" target="knet">吴曙东</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CXJR&amp;JourName=%e4%b8%ad%e5%9b%bd%e5%9f%8e%e4%b9%a1%e9%87%91%e8%9e%8d%e6%8a%a5&amp;PYKM=CXJR">中国城乡金融报</a>
+      </td>
+      <td>
+        2006-04-28
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP39US1IzT5lXV4UzVD10YNhmeOJ0RRV3VKFUO1FFTN9WMr1ka3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">3</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCXJR20060428A043%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZJB20060308A092!5958!4" onclick="checkMark(this)" type="checkbox">5958</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5958&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZJB20060308A092" target="_blank">新桥投资A股公司思路探寻</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%99%88%e9%9b%aa&amp;scode=" target="knet">陈雪</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZJB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%af%81%e5%88%b8%e6%8a%a5&amp;PYKM=CZJB">中国证券报</a>
+      </td>
+      <td>
+        2006-03-08
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3ZEWPBTb4plT0JlYwFTTiJWUohmcoxUZ4IHZXVlQZllTapla3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">17</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZJB20060308A092%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZJB20061117A153!5959!4" onclick="checkMark(this)" type="checkbox">5959</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5959&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZJB20061117A153" target="_blank">到卓越还缺什么</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%ae%b8%e6%96%87%e9%94%8b&amp;scode=" target="knet">许文锋</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZJB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%af%81%e5%88%b8%e6%8a%a5&amp;PYKM=CZJB">中国证券报</a>
+      </td>
+      <td>
+        2006-11-17
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP31mUBRTOwlVQt5GRuVzVYt0cXR3aMJzVoFFbthlVIJkcBtyL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZJB20061117A153%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZJB20061124A181!5960!4" onclick="checkMark(this)" type="checkbox">5960</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5960&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZJB20061124A181" target="_blank">网络营销将席卷一切</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e6%9e%97%e6%99%af%e6%96%b0&amp;scode=" target="knet">林景新</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZJB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%af%81%e5%88%b8%e6%8a%a5&amp;PYKM=CZJB">中国证券报</a>
+      </td>
+      <td>
+        2006-11-24
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP31UZJJTdkJXNTVmb1V1aWt2UipnQ2t0TUd0TjFmSycGOjBzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">616</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZJB20061124A181%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZJB20061223A131!5961!4" onclick="checkMark(this)" type="checkbox">5961</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5961&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZJB20061223A131" target="_blank">数码走过2006</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%9f%a6%e4%bc%9f&amp;scode=" target="knet">韦伟</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZJB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%af%81%e5%88%b8%e6%8a%a5&amp;PYKM=CZJB">中国证券报</a>
+      </td>
+      <td>
+        2006-12-23
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPntiVyw2SSlEORhjQs90KmtkT01mcn9GdPFDdHNHR5VmUmZFO042Mu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZJB20061223A131%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZLB200601110081!5962!4" onclick="checkMark(this)" type="checkbox">5962</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5962&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZLB200601110081" target="_blank">创新管理 共铸辉煌</a>
+      </td>
+       <td class="author_flag"></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZLB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%b4%a8%e9%87%8f%e6%8a%a5&amp;PYKM=CZLB">中国质量报</a>
+      </td>
+      <td>
+        2006-01-11
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRZTVwlFc6NnWkhnSqFWSxFWOPJ1LpZlbZZDOyMjdUhUauBna3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZLB200601110081%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZLB200605090092!5963!4" onclick="checkMark(this)" type="checkbox">5963</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5963&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZLB200605090092" target="_blank">绕开“欧典”式陷阱</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%83%a1%e7%ab%8b%e5%bd%aa&amp;scode=" target="knet">胡立彪</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZLB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%b4%a8%e9%87%8f%e6%8a%a5&amp;PYKM=CZLB">中国质量报</a>
+      </td>
+      <td>
+        2006-05-09
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBFTWUxmUTlDNCl2UOJEcU9ke4UnSB9SMJtUNiJWN1B1VUFka3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZLB200605090092%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZLB200605180081!5964!4" onclick="checkMark(this)" type="checkbox">5964</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5964&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZLB200605180081" target="_blank">中国制造的理性跨越源于自省</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%b0%b9%e4%bc%a0%e9%ab%98&amp;scode=" target="knet">尹传高</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZLB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%b4%a8%e9%87%8f%e6%8a%a5&amp;PYKM=CZLB">中国质量报</a>
+      </td>
+      <td>
+        2006-05-18
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3hGRWRlSIVlZGZzZLhDU2BFUxV0S1gmT3dEePZlSN9WMr1ka3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZLB200605180081%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZLB200611220051!5965!4" onclick="checkMark(this)" type="checkbox">5965</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5965&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZLB200611220051" target="_blank">一把手工程——从企业领导衡量企业卓越之旅</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e8%b6%8a&amp;scode=" target="knet">王越</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZLB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%b4%a8%e9%87%8f%e6%8a%a5&amp;PYKM=CZLB">中国质量报</a>
+      </td>
+      <td>
+        2006-11-22
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPnZHOoJlV5lmWxIXeulHR3d0UapkYSFkUVFzQXFmSycGOjBzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">5</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZLB200611220051%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZLB200612180041!5966!4" onclick="checkMark(this)" type="checkbox">5966</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5966&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZLB200612180041" target="_blank">评点托重任  赞扬寄厚望</a>
+      </td>
+       <td class="author_flag"></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZLB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%b4%a8%e9%87%8f%e6%8a%a5&amp;PYKM=CZLB">中国质量报</a>
+      </td>
+      <td>
+        2006-12-18
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBFXdx10UYBna1R0VLVFWzs2ZpVWNvRXNHdEMJFjMqhkbQF3YQxGTwYGaZZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZLB200612180041%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!CZLB200612230041!5967!4" onclick="checkMark(this)" type="checkbox">5967</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5967&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=CZLB200612230041" target="_blank">警钟,为谁而鸣</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%88%98%e9%9c%9e&amp;scode=" target="knet">刘霞</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%8f%b2%e7%8e%89%e6%88%90&amp;scode=" target="knet">史玉成</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=CZLB&amp;JourName=%e4%b8%ad%e5%9b%bd%e8%b4%a8%e9%87%8f%e6%8a%a5&amp;PYKM=CZLB">中国质量报</a>
+      </td>
+      <td>
+        2006-12-23
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPnp2SEhTYYJnQSJDNxsCWE5kZhpXQnd2KoVlQwYHR5VmUmZFO042Mu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dCZLB200612230041%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DINA20061106A021!5968!4" onclick="checkMark(this)" type="checkbox">5968</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5968&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DINA20061106A021" target="_blank">重磅策划：中国IT需要“召回制度”</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e6%9c%b1%e6%96%87%e5%88%a9&amp;scode=" target="knet">朱文利</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e5%9f%b9%e5%9e%a0&amp;scode=" target="knet">王培垠</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%82%93%e6%99%93%e8%bf%9b&amp;scode=" target="knet">邓晓进</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e6%9b%b9%e5%a2%9e%e5%85%89&amp;scode=" target="knet">曹增光</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%81%94%e5%90%88&amp;scode=" target="knet">联合</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DINA&amp;JourName=%e7%94%b5%e8%84%91%e6%8a%a5&amp;PYKM=DINA">电脑报</a>
+      </td>
+      <td>
+        2006-11-06
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3dkVDlzVQJ2T5dzYNxUMyREbI5WOykUU5MXWRFWQnRHOjBzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDINA20061106A021%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DIZI200610080193!5969!4" onclick="checkMark(this)" type="checkbox">5969</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5969&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DIZI200610080193" target="_blank">戴尔召回410万块“易燃”电池</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%bb%84%e4%ba%91&amp;scode=" target="knet">黄云</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DIZI&amp;JourName=%e7%94%b5%e5%ad%90%e6%8a%a5&amp;PYKM=DIZI">电子报</a>
+      </td>
+      <td>
+        2006-10-08
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRZVRykkeBd0ZhNFc5MkRxZmY48iT4w0RVJEVVpUQwUkcBtyL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDIZI200610080193%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DNJY20060821G031!5970!4" onclick="checkMark(this)" type="checkbox">5970</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5970&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DNJY20060821G031" target="_blank">网络设备网罗“钱”景</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e4%bc%9f%e5%85%89&amp;scode=" target="knet">王伟光</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DNJY&amp;JourName=%e4%b8%ad%e5%9b%bd%e7%94%b5%e8%84%91%e6%95%99%e8%82%b2%e6%8a%a5&amp;PYKM=DNJY">中国电脑教育报</a>
+      </td>
+      <td>
+        2006-08-21
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBhjQ08CV4hjWO9yaoR2aIR2a4NFbOtid6ZjV6JFW5tCMP9Sa3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDNJY20060821G031%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DNJY20061218A011!5971!4" onclick="checkMark(this)" type="checkbox">5971</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5971&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DNJY20061218A011" target="_blank">逆势造英雄</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%94%b0%e6%b1%9f&amp;scode=" target="knet">田江</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DNJY&amp;JourName=%e4%b8%ad%e5%9b%bd%e7%94%b5%e8%84%91%e6%95%99%e8%82%b2%e6%8a%a5&amp;PYKM=DNJY">中国电脑教育报</a>
+      </td>
+      <td>
+        2006-12-18
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPnZEUvkERaNFNaBTZpdnbMBzKRhEM2U0UzEWeZFHbvImUmZFO042Mu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDNJY20061218A011%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DNJY20061218B011!5972!4" onclick="checkMark(this)" type="checkbox">5972</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5972&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DNJY20061218B011" target="_blank">2006IT风云榜之2006之“最”</a>
+      </td>
+       <td class="author_flag"></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DNJY&amp;JourName=%e4%b8%ad%e5%9b%bd%e7%94%b5%e8%84%91%e6%95%99%e8%82%b2%e6%8a%a5&amp;PYKM=DNJY">中国电脑教育报</a>
+      </td>
+      <td>
+        2006-12-18
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRJ2ZohTOllHahBTZpdnbMBzKRhEM2U0UzEWeZFHbvImUmZFO042Mu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDNJY20061218B011%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DNSB200601230121!5973!4" onclick="checkMark(this)" type="checkbox">5973</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5973&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DNSB200601230121" target="_blank">杭州：渠道商期待破局</a>
+      </td>
+       <td class="author_flag"></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DNSB&amp;JourName=%e7%94%b5%e8%84%91%e5%95%86%e6%8a%a5&amp;PYKM=DNSB">电脑商报</a>
+      </td>
+      <td>
+        2006-01-23
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBREbklDWvUHd5hTRxZEWYVkT2MWMXNlZNxWWEF3avN2brRma3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDNSB200601230121%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DNSB200610300541!5974!4" onclick="checkMark(this)" type="checkbox">5974</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5974&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DNSB200610300541" target="_blank">区域分销  不甘消沉的割据势力</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%b0%a2%e6%b6%9b&amp;scode=" target="knet">谢涛</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e6%99%93%e6%b0%91&amp;scode=" target="knet">王晓民</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DNSB&amp;JourName=%e7%94%b5%e8%84%91%e5%95%86%e6%8a%a5&amp;PYKM=DNSB">电脑商报</a>
+      </td>
+      <td>
+        2006-10-30
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3JlM1E1RydmelZlNZJnNVZ3c0gXZQVXdmZXeFZTRwUkcBtyL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDNSB200610300541%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DNSB200612040061!5975!4" onclick="checkMark(this)" type="checkbox">5975</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5975&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DNSB200612040061" target="_blank">软件“佃农”的前世今生</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%b0%a2%e6%b6%9b&amp;scode=" target="knet">谢涛</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DNSB&amp;JourName=%e7%94%b5%e8%84%91%e5%95%86%e6%8a%a5&amp;PYKM=DNSB">电脑商报</a>
+      </td>
+      <td>
+        2006-12-04
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPR1mazEVR4FDV2pXcwoVdV50aUl1S0Ild1FTevJUUnRHOjBzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDNSB200612040061%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DYCJ20060110C052!5976!4" onclick="checkMark(this)" type="checkbox">5976</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5976&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DYCJ20060110C052" target="_blank">美企占半壁江山  中国企业遗憾缺席</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%99%88%e9%9b%aa%e9%a2%91&amp;scode=" target="knet">陈雪频</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DYCJ&amp;JourName=%e7%ac%ac%e4%b8%80%e8%b4%a2%e7%bb%8f%e6%97%a5%e6%8a%a5&amp;PYKM=DYCJ">第一财经日报</a>
+      </td>
+      <td>
+        2006-01-10
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPnNHW6VkYWZ3aqpEM1c2L0JVdUplcw4WeWF0MyckNyN2brRma3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">3</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDYCJ20060110C052%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DYCJ20060407C011!5977!4" onclick="checkMark(this)" type="checkbox">5977</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5977&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DYCJ20060407C011" target="_blank">屡现问题笔记本 宏碁超速发展藏<font class="Mark">危机</font></a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e5%a6%82%e6%99%a8&amp;scode=" target="knet">王如晨</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DYCJ&amp;JourName=%e7%ac%ac%e4%b8%80%e8%b4%a2%e7%bb%8f%e6%97%a5%e6%8a%a5&amp;PYKM=DYCJ">第一财经日报</a>
+      </td>
+      <td>
+        2006-04-07
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRtEUpVGendDe5o3VXZkYIFkNORmNzgjZ6NFWTN3bOF1VUFka3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">3</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDYCJ20060407C011%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DYCJ20060718C051!5978!4" onclick="checkMark(this)" type="checkbox">5978</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5978&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DYCJ20060718C051" target="_blank">后期“贫血”国产卡通产业化步履蹒跚</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%bc%a0%e6%96%b0%e9%9b%84&amp;scode=" target="knet">张新雄</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DYCJ&amp;JourName=%e7%ac%ac%e4%b8%80%e8%b4%a2%e7%bb%8f%e6%97%a5%e6%8a%a5&amp;PYKM=DYCJ">第一财经日报</a>
+      </td>
+      <td>
+        2006-07-18
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBx2aKJzLRJVShdHNlVmTrRmeoRWV2RzYTtSU5AHZtR2K1VGS2UlMvJTcZZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDYCJ20060718C051%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DYCJ20060817C037!5979!4" onclick="checkMark(this)" type="checkbox">5979</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5979&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DYCJ20060817C037" target="_blank">麦大伟离职戴尔(中国)痛中谋变</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e5%a6%82%e6%99%a8&amp;scode=" target="knet">王如晨</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DYCJ&amp;JourName=%e7%ac%ac%e4%b8%80%e8%b4%a2%e7%bb%8f%e6%97%a5%e6%8a%a5&amp;PYKM=DYCJ">第一财经日报</a>
+      </td>
+      <td>
+        2006-08-17
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBhHTkpmePlEewgWTxIlbrJXWwJ2b2g0YRd1c1clW4tCMP9Sa3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDYCJ20060817C037%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DYCJ20060929C042!5980!4" onclick="checkMark(this)" type="checkbox">5980</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5980&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DYCJ20060929C042" target="_blank">不容失败的TCL国际化</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e4%bd%95%e5%bf%97%e6%af%85&amp;scode=" target="knet">何志毅</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DYCJ&amp;JourName=%e7%ac%ac%e4%b8%80%e8%b4%a2%e7%bb%8f%e6%97%a5%e6%8a%a5&amp;PYKM=DYCJ">第一财经日报</a>
+      </td>
+      <td>
+        2006-09-29
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRBFSnZTV05Gek92QxkVRKhXaGh3aE5GcxwWT1QlZyRzKFdzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">28</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDYCJ20060929C042%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DYCJ20061009C031!5981!4" onclick="checkMark(this)" type="checkbox">5981</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5981&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DYCJ20061009C031" target="_blank">思科换标：示好“个人消费者”时代?</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%ba%b7%e5%81%a5&amp;scode=" target="knet">康健</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DYCJ&amp;JourName=%e7%ac%ac%e4%b8%80%e8%b4%a2%e7%bb%8f%e6%97%a5%e6%8a%a5&amp;PYKM=DYCJ">第一财经日报</a>
+      </td>
+      <td>
+        2006-10-09
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPB9CVjtyKRRGeIlHZEd2SWVUaGh3aE5GcxwWT1QlZyRzKFdzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">4</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDYCJ20061009C031%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DYCJ20061115T291!5982!4" onclick="checkMark(this)" type="checkbox">5982</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5982&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DYCJ20061115T291" target="_blank">中国企业国际化之路</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e4%bd%95%e5%bf%97%e6%af%85&amp;scode=" target="knet">何志毅</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DYCJ&amp;JourName=%e7%ac%ac%e4%b8%80%e8%b4%a2%e7%bb%8f%e6%97%a5%e6%8a%a5&amp;PYKM=DYCJ">第一财经日报</a>
+      </td>
+      <td>
+        2006-11-15
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPB9WMLdlbPJGemJnRItmULFlazE2d6tiSCJXdBBjVqRHOjBzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">43</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDYCJ20061115T291%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DZZX20060213B051!5983!4" onclick="checkMark(this)" type="checkbox">5983</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5983&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DZZX20060213B051" target="_blank">笔记本产业荣景仍在  零组件厂艰难存活</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%bb%84%e5%85%b1%e9%92%bf&amp;scode=" target="knet">黄共钿</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DZZX&amp;JourName=%e7%94%b5%e5%ad%90%e8%b5%84%e8%ae%af%e6%97%b6%e6%8a%a5&amp;PYKM=DZZX">电子资讯时报</a>
+      </td>
+      <td>
+        2006-02-13
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRJ1YIVWMycXWpBzVxYDNlJFe4Z1QC9iVWJzZjpFNyN2brRma3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">2</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDZZX20060213B051%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DZZX20060501A011!5984!4" onclick="checkMark(this)" type="checkbox">5984</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5984&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DZZX20060501A011" target="_blank">坚守代工利润  台一线笔记本厂业绩揭晓</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e6%9b%be%e8%80%8c%e6%b1%b6&amp;scode=" target="knet">曾而汶</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DZZX&amp;JourName=%e7%94%b5%e5%ad%90%e8%b5%84%e8%ae%af%e6%97%b6%e6%8a%a5&amp;PYKM=DZZX">电子资讯时报</a>
+      </td>
+      <td>
+        2006-05-01
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBZzY0MURrlVRSpke1U1Z3F3SFFGeSpEVrYjVsJncOF1VUFka3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">5</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDZZX20060501A011%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DZZX20060821C071!5985!4" onclick="checkMark(this)" type="checkbox">5985</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5985&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DZZX20060821C071" target="_blank">获利遭严重挤压  显示器代工厂警报响！</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e5%90%9b%e6%af%85&amp;scode=" target="knet">王君毅</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DZZX&amp;JourName=%e7%94%b5%e5%ad%90%e8%b5%84%e8%ae%af%e6%97%b6%e6%8a%a5&amp;PYKM=DZZX">电子资讯时报</a>
+      </td>
+      <td>
+        2006-08-21
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRVHba1kRyRWbTxWc5ZmNXVFcFpEcyBXc3Z2T6JjZ4tCMP9Sa3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDZZX20060821C071%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DZZX20060925A021!5986!4" onclick="checkMark(this)" type="checkbox">5986</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5986&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DZZX20060925A021" target="_blank">笔记本电池问题频仍</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e6%9e%97%e8%af%97%e8%90%8d&amp;scode=" target="knet">林诗萍</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DZZX&amp;JourName=%e7%94%b5%e5%ad%90%e8%b5%84%e8%ae%af%e6%97%b6%e6%8a%a5&amp;PYKM=DZZX">电子资讯时报</a>
+      </td>
+      <td>
+        2006-09-25
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRB3a1gnSSZmVQh3UBxETjJUSXpVew8USxoFTVd1YyRzKFdzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDZZX20060925A021%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DZZX20061016A031!5987!4" onclick="checkMark(this)" type="checkbox">5987</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5987&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DZZX20061016A031" target="_blank">索尼“电池门”<font class="Mark">危机</font>越陷越深</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%bc%a0%e7%9c%9f&amp;scode=" target="knet">张真</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DZZX&amp;JourName=%e7%94%b5%e5%ad%90%e8%b5%84%e8%ae%af%e6%97%b6%e6%8a%a5&amp;PYKM=DZZX">电子资讯时报</a>
+      </td>
+      <td>
+        2006-10-16
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3RFcVR2TLt0ZKZnbCZXbZBTSXpVew8USxoFTVd1YyRzKFdzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">6</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDZZX20061016A031%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DZZX20061120A042!5988!4" onclick="checkMark(this)" type="checkbox">5988</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5988&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DZZX20061120A042" target="_blank">日电机厂半年报公布  夏普、松下最有斩获</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e6%9d%a8%e4%bb%81%e6%9d%b0&amp;scode=" target="knet">杨仁杰</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DZZX&amp;JourName=%e7%94%b5%e5%ad%90%e8%b5%84%e8%ae%af%e6%97%b6%e6%8a%a5&amp;PYKM=DZZX">电子资讯时报</a>
+      </td>
+      <td>
+        2006-11-20
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3ZFa3sidx1UcTd0TrNnMV5kRvtyM4pHM2oGbpNVVqRHOjBzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDZZX20061120A042%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DZZX20061120A061!5989!4" onclick="checkMark(this)" type="checkbox">5989</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5989&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DZZX20061120A061" target="_blank">笔记本电池灼伤索尼</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%94%a1%e9%9f%a6%e7%be%bd&amp;scode=" target="knet">蔡韦羽</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DZZX&amp;JourName=%e7%94%b5%e5%ad%90%e8%b5%84%e8%ae%af%e6%97%b6%e6%8a%a5&amp;PYKM=DZZX">电子资讯时报</a>
+      </td>
+      <td>
+        2006-11-20
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBx0ZzIWQv1UcTd0TrNnMV5kRvtyM4pHM2oGbpNVVqRHOjBzL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">3</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDZZX20061120A061%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!DZZX20061211A041!5990!4" onclick="checkMark(this)" type="checkbox">5990</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5990&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=DZZX20061211A041" target="_blank">中国显示器市场拉响戴尔警报</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e4%b9%90%e8%a8%80&amp;scode=" target="knet">乐言</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=DZZX&amp;JourName=%e7%94%b5%e5%ad%90%e8%b5%84%e8%ae%af%e6%97%b6%e6%8a%a5&amp;PYKM=DZZX">电子资讯时报</a>
+      </td>
+      <td>
+        2006-12-11
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPRJUSw5WeZNXMIFkWChjQHJzMx9GOvoGTrYTQRZVV4ImUmZFO042Mu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dDZZX20061211A041%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!FSRB20060615A015!5991!4" onclick="checkMark(this)" type="checkbox">5991</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5991&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=FSRB20060615A015" target="_blank">东南借雨荡积尘</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%82%b5%e6%9e%ab&amp;scode=" target="knet">邵枫</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=FSRB&amp;JourName=%e6%8a%9a%e9%a1%ba%e6%97%a5%e6%8a%a5&amp;PYKM=FSRB">抚顺日报</a>
+      </td>
+      <td>
+        2006-06-15
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPn10SWVEMUdURQZ2KIdXNMdmUYRDVJdXeXBzLNFle4Y2MYlka3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dFSRB20060615A015%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GDJS20061031B011!5992!4" onclick="checkMark(this)" type="checkbox">5992</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5992&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GDJS20061031B011" target="_blank">尽览世界陶瓷多姿多彩  感悟陶瓷文化新新时尚</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e9%83%ad%e4%ba%9a%e6%98%9f&amp;scode=" target="knet">郭亚星</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GDJS&amp;JourName=%e5%b9%bf%e4%b8%9c%e5%bb%ba%e8%ae%be%e6%8a%a5&amp;PYKM=GDJS">广东建设报</a>
+      </td>
+      <td>
+        2006-10-31
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3hVehVDSNBnTNJGclV1UrckRrhFarIXa092KoBjVEZkcBtyL1I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">4</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGDJS20061031B011%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GJCD200601090032!5993!4" onclick="checkMark(this)" type="checkbox">5993</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5993&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GJCD200601090032" target="_blank">自主创新：科技精英不再报国无门</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%8f%b2%e7%a7%8b%e5%ae%9e&amp;scode=" target="knet">史秋实</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GJCD&amp;JourName=%e4%b8%ad%e5%9b%bd%e9%ab%98%e6%96%b0%e6%8a%80%e6%9c%af%e4%ba%a7%e4%b8%9a%e5%af%bc%e6%8a%a5&amp;PYKM=GJCD">中国高新技术产业导报</a>
+      </td>
+      <td>
+        2006-01-09
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPnR1bi9Ccw9iMnl1NtBnSMVjajVUN55mZ5N1dwYHeHdlbrlFTYB1UBx0KqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGJCD200601090032%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GJCD20060410C061!5994!4" onclick="checkMark(this)" type="checkbox">5994</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5994&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GJCD20060410C061" target="_blank">“虹”图崭露变数几何</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e5%86%9b%e5%8d%8e&amp;scode=" target="knet">王军华</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GJCD&amp;JourName=%e4%b8%ad%e5%9b%bd%e9%ab%98%e6%96%b0%e6%8a%80%e6%9c%af%e4%ba%a7%e4%b8%9a%e5%af%bc%e6%8a%a5&amp;PYKM=GJCD">中国高新技术产业导报</a>
+      </td>
+      <td>
+        2006-04-10
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBJzRUdXTLJUNzInM1ZnQDNFbzJ2T2R0M2cUaLhURrJ3YRZka3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGJCD20060410C061%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GJCD20060710D051!5995!4" onclick="checkMark(this)" type="checkbox">5995</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5995&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GJCD20060710D051" target="_blank">合纵连横 手机设计业谋划突围</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%94%90%e5%8c%96%e5%86%9b&amp;scode=" target="knet">唐化军</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GJCD&amp;JourName=%e4%b8%ad%e5%9b%bd%e9%ab%98%e6%96%b0%e6%8a%80%e6%9c%af%e4%ba%a7%e4%b8%9a%e5%af%bc%e6%8a%a5&amp;PYKM=GJCD">中国高新技术产业导报</a>
+      </td>
+      <td>
+        2006-07-10
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBVTRwRkcxYmWxAXbkpnV3MVTLR2ZTZmRRVjNHR3b5cWNltWa3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">8</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGJCD20060710D051%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GJCD20060724B051!5996!4" onclick="checkMark(this)" type="checkbox">5996</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5996&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GJCD20060724B051" target="_blank">蝴蝶效应  PC厂商动荡中求生</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%bc%a0%e4%bc%9f&amp;scode=" target="knet">张伟</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GJCD&amp;JourName=%e4%b8%ad%e5%9b%bd%e9%ab%98%e6%96%b0%e6%8a%80%e6%9c%af%e4%ba%a7%e4%b8%9a%e5%af%bc%e6%8a%a5&amp;PYKM=GJCD">中国高新技术产业导报</a>
+      </td>
+      <td>
+        2006-07-24
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPB1GerNTQJFkQ0Q3LNlnV3MVTLR2ZTZmRRVjNHR3b5cWNltWa3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGJCD20060724B051%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GJCD20060904D031!5997!4" onclick="checkMark(this)" type="checkbox">5997</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5997&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GJCD20060904D031" target="_blank">海尔输掉“2IN1”商标案  专家论道中国企业国际化</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e8%91%a3%e7%9b%9f%e5%90%9b&amp;scode=" target="knet">董盟君</a>; <a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e5%bc%a0%e8%8e%89&amp;scode=" target="knet">张莉</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GJCD&amp;JourName=%e4%b8%ad%e5%9b%bd%e9%ab%98%e6%96%b0%e6%8a%80%e6%9c%af%e4%ba%a7%e4%b8%9a%e5%af%bc%e6%8a%a5&amp;PYKM=GJCD">中国高新技术产业导报</a>
+      </td>
+      <td>
+        2006-09-04
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPBR2U28UeVV1crlUNYxkUDpkVwgmQJpEa5FlMmxkattCMP9Sa3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">8</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGJCD20060904D031%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GJCD20061225A072!5998!4" onclick="checkMark(this)" type="checkbox">5998</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5998&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GJCD20061225A072" target="_blank">新材料产业：新能源材料炙手可热</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%ba%aa%e7%88%b1%e7%8e%b2&amp;scode=" target="knet">纪爱玲</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GJCD&amp;JourName=%e4%b8%ad%e5%9b%bd%e9%ab%98%e6%96%b0%e6%8a%80%e6%9c%af%e4%ba%a7%e4%b8%9a%e5%af%bc%e6%8a%a5&amp;PYKM=GJCD">中国高新技术产业导报</a>
+      </td>
+      <td>
+        2006-12-25
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPnNnVzJGNZZVZ5EmawBzTndDO4VURa9WWMJGc44UZFJmUmZFO042Mu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">75</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGJCD20061225A072%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#ffffff">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GJCD20061225D011!5999!4" onclick="checkMark(this)" type="checkbox">5999</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=5999&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GJCD20061225D011" target="_blank">鲜花与荆棘  2006年IT业艰难前行</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e6%88%88%e6%b8%85%e5%b9%b3&amp;scode=" target="knet">戈清平</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GJCD&amp;JourName=%e4%b8%ad%e5%9b%bd%e9%ab%98%e6%96%b0%e6%8a%80%e6%9c%af%e4%ba%a7%e4%b8%9a%e5%af%bc%e6%8a%a5&amp;PYKM=GJCD">中国高新技术产业导报</a>
+      </td>
+      <td>
+        2006-12-25
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TP3RlZ2JkQ5cWR0QmawBzTndDO4VURa9WWMJGc44UZFJmUmZFO042Mu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGJCD20061225D011%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr><tr bgcolor="#f6f7fb">
+<td style="white-space:nowrap;"><input name="FileNameS" value="CCND2006!GJSB200601190011!6000!4" onclick="checkMark(this)" type="checkbox">6000</td><td>
+        <a class="fz14" href="/kns/detail/detail.aspx?QueryID=4&amp;CurRec=6000&amp;DbCode=CCND&amp;dbname=CCND2006&amp;filename=GJSB200601190011" target="_blank">回眸“十五”辉煌 精彩中国商务</a>
+      </td>
+       <td class="author_flag"><a class="KnowledgeNetLink" href="/kns/popup/knetsearchNew.aspx?sdb=CCND&amp;sfield=%e4%bd%9c%e8%80%85&amp;skey=%e7%8e%8b%e7%91%84&amp;scode=" target="knet">王瑄</a></td>
+      <td>
+        <a target="_blank" href="/kns/NaviBridge.aspx?LinkType=BaseLink&amp;DBCode=ccnd&amp;TableName=ccndbaseinfo&amp;Field=BaseID&amp;Value=GJSB&amp;JourName=%e5%9b%bd%e9%99%85%e5%95%86%e6%8a%a5&amp;PYKM=GJSB">国际商报</a>
+      </td>
+      <td>
+        2006-01-19
+      </td>
+       <td align="center"><a href="../download.aspx?filename=mS0wUO4V1UtZGRyEEUU1GR4ZjbzUmSjZzQxwUTsZDVjR3LaRlQhlFd1NjZa1GNNFGbEdnZVxmRh9UbtZVTFVHV=0TPR9CW6ZHWul1MLBDSG5WOxJmMXZkWRdGRzUkQIRFeSN2brRma3I2bu1GaqZHaFdVQRJXNZxEMuRjN5ElaY1&amp;tablename=CCND2006" target="_blank" class="briefDl_D" title="下载"></a><span class="downloadCount"><a href="javascript:void(0);" onclick="SubCountDownLoad(0,this)">1</a></span></td>
+      <td align="center">
+        <a class="kreader" target="online_open" href="/kns/ReadRedirectPage.aspx?domain=%2fKReader%2fRedriectPage.aspx%3ftablename%3dCCND2006%26filename%3dGJSB200601190011%26dbCode%3dCCND%26Mark%3d0" title="阅读"></a>
+      </td></tr></tbody></table>
+
+
+</td></tr><tr><td><table class="pageBar_bottom" width="100%" cellspacing="0" cellpadding="0" border="0" align="left"><tbody><tr><td colspan="7" align="left"><div class="TitleLeftCell"><div class="pagerTitleCell"><span id="lbPagerTitle" name="lbPagerTitle" class="pagerTitle"></span>&nbsp;找到&nbsp;6,554&nbsp;条结果&nbsp;</div><a href="?curpage=1&amp;RecordsPerPage=50&amp;QueryID=4&amp;ID=&amp;turnpage=119&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;sKuaKuID=4#J_ORDER&amp;" title="键盘的“← →”可以实现快速翻页">首页</a><a href="?curpage=119&amp;RecordsPerPage=50&amp;QueryID=4&amp;ID=&amp;turnpage=1&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;sKuaKuID=4#J_ORDER&amp;" title="键盘的“← →”可以实现快速翻页">上一页</a><a href="?curpage=118&amp;RecordsPerPage=50&amp;QueryID=4&amp;ID=&amp;turnpage=1&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;sKuaKuID=4#J_ORDER&amp;" title="键盘的“← →”可以实现快速翻页">118</a><a href="?curpage=119&amp;RecordsPerPage=50&amp;QueryID=4&amp;ID=&amp;turnpage=1&amp;tpagemode=L&amp;dbPrefix=CCND&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_result_aspx&amp;sKuaKuID=4#J_ORDER&amp;" title="键盘的“← →”可以实现快速翻页">119</a><font class="Mark">120</font></div></td></tr></tbody></table>
+
+
+</td></tr></tbody></table>
+        <input name="tpagemode" id="tpagemode" value="L" type="hidden">
     </form>
+    <script type="text/javascript">
+    try{}catch(e){}
+        ChangeDownloadImg();
+        RevertUserSelect();
+        briefTableListJSEvent();
+        BindOnlick_ShowWait();
+        BindTurnPage_TitleTip();
+        parent.$("#zyzklist").hide();
+        //外文推荐
+        recWWJDAddToTable();
+        var analysisURL = "http://kns.cnki.net/KVisual/ArticleAnalysis/index";
+        modifySql();
+        function modifySql() {
+            var param = "";
+            if (param == null || param == "") {
+                var obj = parent.document.getElementById("sql");
+                if (obj) {
+                    obj.value = "2827E4B6502D871094C03BE7F72728F4B5AF99EB3A74E78A63BB63268C34F5B8355ADC59C51F21C0DC3580AEC609D22F77A4B615269D4571A6825EBD8306986EAD29667488C754FDF8C9300274868767C6668F21C0EE8365492AED066B9A340601074D4518E7D59F314388E9E5B06B29881C138083B4AC8D151487344FB32636DDEEBB6B29844B048F526A02792EC21A1533392563D852B7766C508206D0988C84D2F8D5EBFBEDB51B0718278ABED202001B1BF6B5D1250BF32572B13A95E0B8277874AEED612A63C380C0C00357850F061C1EF2345C4688677C2A0DA99A214329C76CF9F3C096F5F73FC69A0B7CE50157EFD88BC0CB908AF823FBA737E099C35808F8AFB81148D09871AAFD8FAEC5B4891AAAE517BB4A7C6BEFF9993550C21E3FF7D72C01FB10F242DB8423C4A5721DDD50A178838727DFB88A16D2C98EE5A137F737952644B6497613F27D9F81637F6225F1DA03BD1B4978BCD8912AF0322FCF0D737DBB135DB2EF8E24CE3CCDB348722C34706B8ABF1BF7390840762D6ED48FE433AACC2A9373DFA86764241C97217E7E3C62540BA34412CD68765ED00CB4D0E3C3ADC1135995CF91BA577EDB7378%";
+            }
+        }
+    }
+    //绑定分析
+    $("#analysisBox").hoverDelay({
+        hoverDuring: 200,
+        outDuring: 0,
+        hoverEvent: function () {
+            var $this = $(this);
+            //显示数字
+            var fileNameS = new FileNameS();
+            var pcnt = fileNameS.Count();
+            var rcnt = 643822;
+            var ptext = pcnt > -10 ? "<span>(" + pcnt + ")</span>" : "";//始终为真
+            var rtext = rcnt > -10 ? "<span>(" + rcnt + ")</span>" : "";
+            $this.find("a").eq(0).html("已选文献分析" + ptext);
+            //$this.find("a").eq(1).html("检索结果");
+            $this.find(".imiSelDp").show();
+        },
+        outEvent: function () {
+            $(this).find(".imiSelDp").hide();
+        }
+    });
+
+
+    //隐藏更多弹出层
+    window.document.onclick = parent.OnclickForHideMoredo;
+    </script>
+    <style type="text/css">
+        .flyingAdd
+        {
+            left: -100px;
+            top: 0px;
+            position: absolute;
+            width: 50px;
+            text-align: center;
+            height: 50px;
+            font-size: 50px;
+            color: #999;
+            z-index: 50000;
+        }
+    </style>
+    <div style="left: -1000px; top: -100px; opacity: 1; font-size: 50px;" class="flyingAdd">
+        <img src="../images/gb/checkboxbook.png" alt="">
+    </div>
+    <script type="text/javascript">
+        LoadScript('http://kns.cnki.net/KRS/scripts/Recommend.js');
+    </script>
+
 
 
 </body></html>
