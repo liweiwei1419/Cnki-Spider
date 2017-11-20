@@ -28,3 +28,19 @@ http://www.w3school.com.cn/cssref/css_selectors.asp
 + BeautifulSoup：用于解析 html 文档
 + 
 2. 
+
+**标题中有换行的一定要去掉。**
+
+```python
+# 网页正文全文高： document.body.scrollHeight
+js = 'window.scrollTo(0,document.body.scrollHeight);'
+driver.execute_script(js)
+```
+
+```python
+with open('test.html', 'w', encoding='utf-8') as fw:
+    fw.write(page_source)
+```
+
+@staticmethod 方法的含义：
+
