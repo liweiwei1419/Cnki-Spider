@@ -17,7 +17,7 @@ class CnkiSpider:
     def __init__(self):
         print('--- 1、执行初始化的步骤：设置 chrome 补丁文件的路径 ---')
         # 设置 chrome 补丁文件的路径
-        #self.driver = webdriver.Chrome(executable_path='/Users/liwei/chromedriver')
+        # self.driver = webdriver.Chrome(executable_path='/Users/liwei/chromedriver')
         self.driver = webdriver.Firefox(executable_path="/Users/liwei/geckodriver")
 
     def select_fill_condition(self, driver):
@@ -46,7 +46,7 @@ class CnkiSpider:
         '''将网页中的序号、 url 和标题解析出来，并写入 csv 文件中'''
         # "lxml" 必须指定，这是官方推荐的解释器
         soup = BeautifulSoup(page_source, "lxml")
-        with open('test.html','w',encoding='utf-8') as fw:
+        with open('test.html', 'w', encoding='utf-8') as fw:
             fw.write(page_source)
 
         rows = soup.select('.GridTableContent tr')[1:]
@@ -62,7 +62,7 @@ class CnkiSpider:
         new_str = url[4:]
         return "http://kns.cnki.net/KCMS" + new_str
 
-    def crawl_next_page(self,content):
+    def crawl_next_page(self, content):
         '''
         首先判断是否有下一页按钮，
         如果有下一页按钮就点击它，继续爬取论文列表；
@@ -70,28 +70,47 @@ class CnkiSpider:
         :param content:
         :return:
         '''
-        soup = BeautifulSoup(content,'lxml')
-        next_btn = soup.select('div.TitleLeftCell a')[-1]
-        if next_btn.get_text() == '下一页':
-            print("有下一页按钮")
-            # 注意：要将页面定位到页面底端，Selenium 才会帮我们点击按钮
-            # 点击下一页按钮
-            next_link = self.driver.find_element_by_css_selector('div.TitleLeftCell a:last-child')
-            next_link.get_attribute("href")
-            next_link.click()
-            self.parse_content_url(self.driver.page_source)
-            time.sleep(5)
-            js = 'window.scrollTo(0,document.body.scrollHeight);'
+        soup = BeautifulSoup(content, 'lxml')
+        # 所有 a 标签的集合
+        a_list = soup.select('div.TitleLeftCell a')
+        if a_list:
+            next_link = a_list[-1]
+            if next_link.get_text() == '下一页':
+                print("有下一页按钮")
+                # 注意：要将页面定位到页面底端，Selenium 才会帮我们点击按钮
+                # 点击下一页按钮
+                next_link = self.driver.find_element_by_css_selector('div.TitleLeftCell a:last-child')
+                next_link.get_attribute("href")
+                next_link.click()
+                self.parse_content_url(self.driver.page_source)
+                time.sleep(3)
+                js = 'window.scrollTo(0,document.body.scrollHeight);'
 
-            # 切换到主文档
-            # 参考资料：selenium之 定位以及切换frame（iframe）
-            # http://blog.csdn.net/huilan_same/article/details/52200586
-            self.driver.switch_to.default_content()
-            self.driver.execute_script(js)
-            self.driver.switch_to.frame('iframeResult')
-            self.crawl_next_page(self.driver.page_source)
+                # 切换到主文档
+                # 参考资料：selenium之 定位以及切换frame（iframe）
+                # http://blog.csdn.net/huilan_same/article/details/52200586
+                self.driver.switch_to.default_content()
+                self.driver.execute_script(js)
+                self.driver.switch_to.frame('iframeResult')
+                self.crawl_next_page(self.driver.page_source)
+            else:
+                print('--- 爬虫停止 ---')
         else:
-            print('--- 爬虫停止 ---')
+            print('------ 走到这里很可能是遇到验证码了 ------')
+            try:
+                check_code_input = self.driver.find_element_by_id("CheckCode")
+                if check_code_input:
+                    check_code = input('请输入您看到的验证码：')
+                    check_code_input.send_keys(check_code)
+                    submit_button = self.driver.find_element_by_xpath("//input[@type='button']")
+                    submit_button.click()
+                    self.crawl_next_page(self.driver.page_source)
+            except Exception as e:
+                print(e)
+                self.crawl_next_page(self.driver.page_source)
+
+
+
 
     def crawl(self, target_url):
         self.driver.get(url=target_url)
@@ -108,7 +127,7 @@ class CnkiSpider:
 
         self.crawl_next_page(self.driver.page_source)
 
-        #self.driver.close()
+        # self.driver.close()
 
 
 if __name__ == '__main__':

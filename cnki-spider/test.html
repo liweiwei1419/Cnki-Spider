@@ -1,15 +1,53 @@
-<html><head>
-        <meta charset="utf-8">
-        <title>数据库介绍</title>
-        <link type="text/css" rel="stylesheet" href="/kinfo/Resource/css/IntroHtml.css">
-        <script type="text/javascript" src="/kinfo/Resource/js/jquery-1.6.1.min.js"></script>    
-    </head>
-    <body>
-        <div class="dbInfoNews"></div>
-        <table class="dbInfoTable" cellpadding="0" border="0" cellspacing="0">
-            <caption>数据库介绍信息:</caption>
-            <tbody><tr><th>简介：</th><td>收录2000年以来中国国内重要报纸刊载的学术性、资料性文献的连续动态更新的数据库。至2012年10月，累积报纸全文文献1000多万篇。</td></tr><tr><th>文献来源：</th><td>国内公开发行的500多种重要报纸。</td></tr><tr><th>专辑专题：</th><td>产品分为十大专辑：基础科学、工程科技Ⅰ、工程科技Ⅱ、农业科技、医药卫生科技、哲学与人文科学、社会科学Ⅰ、社会科学Ⅱ、信息科技、经济与管理科学。十专辑下分为168个专题文献数据库和近3600个子栏目。</td></tr><tr><th>收录年限：</th><td>2000年至今。</td></tr><tr><th>产品形式：</th><td>WEB版（网上包库）、镜像站版、光盘版、流量计费。</td></tr><tr><th>出版时间：</th><td>1、中心网站版、网络镜像版，每工作日出版，法定节假日（春节假日一般为15天，每年假日前10天公布起止日期）除外。<br>
-2、网络镜像版、光盘版，每月10日出版。</td></tr><tr><th>主管单位：</th><td>中华人民共和国教育部</td></tr><tr><th>主办单位：</th><td>清华控股有限公司</td></tr><tr><th>编辑出版：</th><td>《中国学术期刊（光盘版）》电子杂志社有限公司</td></tr><tr><th>地址：</th><td>北京市海淀区西小口路东升科技园北领地A2楼</td></tr></tbody>
-        </table>
+<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body style=" text-align:center"><p><label>请输入验证码：</label><input id="CheckCode" name="CheckCode" type="text"><input value="提交" onclick="javascript:CheckCodeSubmit()" type="button"></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/kns/checkcode.aspx?t='+Math.random()" id="CheckCodeImg" name="CheckCodeImg" style="CURSOR: pointer" onclick="this.src='/kns/checkcode.aspx?t='+Math.random()" title="看不清换一张"></p>
+
+
+
+
+<title>
+
+</title>
     
+   <script type="text/javascript">
+       function CheckCodeSubmit() {
+           var cboj = document.getElementById("CheckCode");
+           var value = "";
+           if (cboj)
+               value = cboj.value;
+
+           if (value) {
+               var url = window.location.href;
+               url = url.replace(window.location.hash, "");
+               url = SetQueryStringByName(url, "vericode", value);
+               window.location = url;
+           }
+       }
+       function SetQueryStringByName(query, name, sValue) {
+           if (query) {
+               var result = query.match(new RegExp("([\?\&]+)" + name + "=[^\&]*", "i"));
+               var sRe = query;
+               if (result != null) {
+                   sRe = query.replace(result[0], result[1] + name + "=" + encodeURI(sValue));
+               }
+               else {
+                   sRe = query + "&" + name + "=" + sValue;
+               }
+               return sRe;
+           }
+           return "";
+       }
+
+
+   </script>
+
+
+    <form name="form1" method="post" action="vericode.aspx?rurl=%2fkns%2fbrief%2fbrief.aspx%3fcurpage%3d97%26RecordsPerPage%3d20%26QueryID%3d3%26ID%3d%26turnpage%3d1%26tpagemode%3dL%26dbPrefix%3dCCND%26Fields%3d%26DisplayMode%3dlistmode%26PageName%3dASP.brief_result_aspx&amp;skey=CheckMaxTurnPageCount" id="form1">
+<div>
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2MTY2ODcyMjlkZBiq1o2PpYjupbxz+wgE+kajW9hKIsP0pwMe35S0uWme" type="hidden">
+</div>
+
+    <div>    
+    </div>
+    </form>
+
+
 </body></html>
