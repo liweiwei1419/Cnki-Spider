@@ -1,4 +1,4 @@
-from bs4_test import BeautifulSoup
+from bs4 import BeautifulSoup
 
 def handle_url(url):
     new_str = url[4:]

@@ -17,5 +17,5 @@ and they lived at the bottom of a well.</p>
 
 soup = BeautifulSoup(html_doc, 'lxml')
 # print(soup.prettify())
-
+# 找到的是第 1 个 p 节点
 print(soup.p['class'])

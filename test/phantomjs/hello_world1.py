@@ -29,6 +29,7 @@ search_button.click()
 # 这一行代码很重要，将驱动的焦点转向子 iframe
 # 这一行代码很重要，将驱动的焦点转向子 iframe
 # 这一行代码很重要，将驱动的焦点转向子 iframe
+# 下面这一行代码已经过时了
 driver.switch_to_frame('iframeResult')
 
 # 等待网页加载

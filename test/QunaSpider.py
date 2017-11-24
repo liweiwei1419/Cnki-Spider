@@ -1,12 +1,11 @@
-import codecs
 import datetime
-import os
-
-from bs4_test import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
+
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from test.bs4_test import BeautifulSoup
 
 
 class QunaSpider:
