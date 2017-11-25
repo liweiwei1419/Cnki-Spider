@@ -44,3 +44,7 @@ with open('test.html', 'w', encoding='utf-8') as fw:
 
 @staticmethod 方法的含义：
 
+
+参考资料：selenium之 定位以及切换frame（iframe）
+http://blog.csdn.net/huilan_same/article/details/52200586
+

@@ -1,0 +1,196 @@
+import csv
+import time
+
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.support.ui import Select
+
+from cnki_spider.spiderLog import SpiderLog
+
+
+class CnkiSpider:
+    def __init__(self, root_url):
+        self.log = SpiderLog()
+        self.current_page = 1
+        self.current_last_item_num = 0
+        self.max_crawl_page = 20
+        self.max_crawl_items = 200
+        self.log.info('--- 初始化：设置 Chrome 或者 Firefox 补丁文件的路径 ---')
+        # Chrome 或者 Firefox 二者设置一个就可以了，
+        # executable_path 要替换成自己本机上的驱动地址
+        # 设置 Chrome 补丁文件的路径
+        # self.driver = webdriver.Chrome(executable_path='/Users/liwei/chromedriver')
+        # 设置 Firefox 补丁文件的路径
+        # 本类中其它方法要使用 driver 的时候，可以通过 self.driver 进行调用
+        self.driver = webdriver.Firefox(executable_path="/Users/liwei/geckodriver")
+        # 让浏览器访问网页
+        self.driver.get(url=root_url)
+        # 让窗口最大化，使得驱动能够"看到"更多的内容
+        self.driver.maximize_window()
+
+    def select_fill_condition(self):
+        '''
+        让驱动帮我们：
+        1、设置搜索条件
+        2、点击提交按钮
+        3、点击每页显示 50 条数据（这样每一页可以爬取更多的 url）
+        :param driver:
+        :return:
+        '''
+        # 将检索条件下列列表 1 设置为"全文"
+        select1 = Select(self.driver.find_element_by_id('txt_1_sel'))
+        select1.select_by_visible_text("全文")
+        # 将检索条件下列列表 2 设置为"全文"
+        select2 = Select(self.driver.find_element_by_id('txt_2_sel'))
+        select2.select_by_visible_text("全文")
+        # 分别设置 3 个文本框的内容
+        elem1 = self.driver.find_element_by_id('txt_1_value1')
+        elem1.send_keys('品牌')
+        elem2 = self.driver.find_element_by_id('txt_1_value2')
+        elem2.send_keys('危机')
+        elem3 = self.driver.find_element_by_id('txt_2_value1')
+        elem3.send_keys('联想')
+        # 将搜索按钮设置为焦点，并点击
+        search_button = self.driver.find_element_by_id('btnSearch')
+        search_button.click()
+        # 此时可以观察浏览器，如果结果没有出现，可以手点搜索按钮
+        # 强制等待 10 秒，使得搜索结果出现（考虑是否可以写成显式的等待）
+        self.log.info("等待 10 秒，等到搜索结果出现")
+        time.sleep(10)
+        # 因为每页显示 50 条的链接在 iframe 里面，所以要将焦点切换
+        self.driver.switch_to.frame('iframeResult')
+        # 点击每页显示 50 条那个链接
+        try:
+            self.driver.find_element_by_xpath("//div[@id='id_grid_display_num']/a[last()]").click()
+        except Exception:
+            self.log.warn("第 1 页上没有找到\"每页显示 50 条\"的链接。重新尝试。")
+
+    def save_urls(self, table):
+        rows = table[1:]
+        # 'a' 表示追加，这里明显应该使用追加的方式保存数据
+        with open('urls.csv', 'a', encoding='utf-8') as fw:
+            writer = csv.writer(fw)
+            for row in rows:
+                order_number = row.select('td')[0].text
+                href = row.select('a')[0].get('href')
+                title = row.select('a')[0].text
+                writer.writerow([order_number, self.handle_url(href), self.handle_title(title)])
+                # writer.writerow(list((order_number, self.handle_url(href), self.handle_title(title))))
+            self.current_last_item_num = order_number
+        self.log.info("第 {} 页的文章链接爬取成功，最后一条记录的编号是：{}。".format(self.current_page, self.current_last_item_num))
+
+    def judge_if_continue(self):
+        # 写完文件以后作判断
+        if self.current_page == self.max_crawl_page + 1:  # +1 是因为保存了 urls 以后，current_page 马上就加 1 了
+            self.log.info("已经爬取了 {} 页，爬虫结束。".format(self.total_page))
+            return False
+        if int(self.current_last_item_num) >= int(self.max_crawl_items):
+            self.log.info("已经爬取了 {} 条记录，爬虫结束。".format(self.current_last_item_num))
+            return False
+        return True
+
+    def parse_current_page(self):
+        '''
+        点击了搜索按钮以后的入口
+        :return:
+        '''
+        # 这里要重新创建一次 BeautifulSoup ，因为验证码的出现有可能破坏原有的网页结构，所以需要重新解析
+        soup = BeautifulSoup(self.driver.page_source, 'lxml')
+        table = soup.select('.GridTableContent tr')
+        # 如果当前页面上有表格，就爬取表格中的序号、标题和链接到 csv 文件中
+        if table:
+            # 页面上显示的当前页的页面
+            html_current_page = soup.select('table.pageBar_bottom font[class="Mark"]')[0].get_text()
+            # 因为 Selenium 的点击链接事件有的时候会失效，
+            # 所以需作判断，让页面显示的页数，也我们逻辑上应该显示的页数一致的时候，才保存页面的内容
+            # 这样做是为了防止重复爬取
+            if int(html_current_page) == int(self.current_page):
+                self.save_urls(table)
+                self.current_page += 1
+
+            if not self.judge_if_continue():
+                return
+
+            # 写完文件以后，如果不满足爬取完成的条件，就判断是否有"下一页"按钮
+            # 判断是否有下一页：
+            # 所有 a 标签的集合
+            a_list = soup.select('div.TitleLeftCell a')
+            if a_list:
+                next_link = a_list[-1]
+                if next_link.get_text() == '下一页':
+                    # 有下一页按钮
+                    self.log.info("当前第 {} 页，有下一页按钮。".format(self.current_page))
+                    # 注意：要将页面定位到页面底端，Selenium 才会帮我们点击按钮
+                    # 点击下一页按钮
+                    next_link = self.driver.find_element_by_css_selector('div.TitleLeftCell a:last-child')
+                    # next_link_str = next_link.get_attribute("href")
+                    next_link.click()  # 这个点击按钮有的时候可能没有生效，会重复爬取数据
+                    # 切换到主文档
+                    self.driver.switch_to.default_content()
+                    js = 'window.scrollTo(0,document.body.scrollHeight);'
+                    self.driver.execute_script(js)
+                    # 切换到子 iframe
+                    self.driver.switch_to.frame('iframeResult')
+                    # 递归调用（自己调用自己）
+                    self.parse_current_page()
+                else:
+                    self.log.info('--- 没有下一页按钮，爬虫停止 ---')
+        else:
+            # 有可能是要求输入验证码的页面
+            self.log.warn('------ 走到这里很可能是遇到验证码了，请回到网页查看，并在控制台中输入验证码。 ------')
+            # 用户手动输入验证码，实现翻页
+            self.input_captcha_by_ourself()
+
+    def input_captcha_by_ourself(self):
+        '''
+        用户手动输入验证码，实现翻页
+        :return:
+        '''
+
+        # 1、回到主窗口
+        self.driver.switch_to.default_content()
+        # 回到页面顶端的位置，这样可以看到验证码
+        js = 'window.scrollTo(0,0);'
+        self.driver.execute_script(js)
+        # 2、再回到子 iframe
+        self.driver.switch_to.frame('iframeResult')
+        # 检测是否有输入验证码的输入框
+        check_code_input = self.driver.find_element_by_id("CheckCode")
+        # 如果有输入框
+        if check_code_input:
+            check_code = input('请输入您在页面中看到的验证码：')
+            check_code_input.send_keys(check_code)
+            submit_button = self.driver.find_element_by_xpath("//input[@type='button']")
+            submit_button.click()
+            # 如果验证码出错，我们还会看到要求输入验证码的页面，逻辑包含在 parse_current_page 中了
+            self.parse_current_page()
+        else:
+            # 如果出现下面这行日志，就表示代码写得有问题
+            self.log.warn('------ 没有验证码输入框，也没有表格，程序错误，退出。 ------')
+            return
+
+    def crawl(self):
+        # 第 1 步：首先执行的是构造方法 __init__(self)，其中含有一些初始化的逻辑
+        # __init__(self) 是默认执行的，不需要显示调用，需要把实现的逻辑写在 __init__(self) 方法里
+        # 第 2 步：填写网页上的搜索条件
+        self.select_fill_condition()
+        # 第 3 步：如果有下一页按钮，则点击下一页按钮，重复执行第 3 步和第 4 步
+        # crawl_next_page 方法是一个递归方法，即自己调用自己，递归结束的条件是页面上没有"下一页"按钮
+        self.parse_current_page()
+        self.driver.close()
+
+    @staticmethod
+    def handle_title(title):
+        return title.replace('\n', '').replace(' ', '')
+
+    @staticmethod
+    def handle_url(url):
+        # 可以考虑使用 url 拼接的方法
+        return "http://kns.cnki.net/KCMS" + url[4:]
+
+
+if __name__ == '__main__':
+    # 起始的 url
+    root_url = 'http://kns.cnki.net/kns/brief/result.aspx?dbprefix=CCND'
+    cnkiSpider = CnkiSpider(root_url)
+    cnkiSpider.crawl()
