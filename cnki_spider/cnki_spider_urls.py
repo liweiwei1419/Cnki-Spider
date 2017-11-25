@@ -6,15 +6,24 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
 from cnki_spider.spiderLog import SpiderLog
+import datetime
 
 
 class CnkiSpider:
-    def __init__(self, root_url):
+    def __init__(self, root_url, max_crawl_page, max_crawl_items):
+        '''
+
+        :param root_url: 爬虫入口的链接
+        :param max_crawl_page: 最多爬取的页码数
+        :param max_crawl_items: 最多爬取的数据条数
+        '''
         self.log = SpiderLog()
         self.current_page = 1
         self.current_last_item_num = 0
-        self.max_crawl_page = 20
-        self.max_crawl_items = 200
+        self.max_crawl_page = max_crawl_page
+        self.max_crawl_items = max_crawl_items
+
+        self.file_name = "papers_urls_{}.csv".format(datetime.date.today().strftime('%Y-%m-%d'))
         self.log.info('--- 初始化：设置 Chrome 或者 Firefox 补丁文件的路径 ---')
         # Chrome 或者 Firefox 二者设置一个就可以了，
         # executable_path 要替换成自己本机上的驱动地址
@@ -68,7 +77,7 @@ class CnkiSpider:
     def save_urls(self, table):
         rows = table[1:]
         # 'a' 表示追加，这里明显应该使用追加的方式保存数据
-        with open('urls.csv', 'a', encoding='utf-8') as fw:
+        with open(self.file_name, 'a', encoding='utf-8') as fw:
             writer = csv.writer(fw)
             for row in rows:
                 order_number = row.select('td')[0].text
@@ -81,20 +90,22 @@ class CnkiSpider:
 
     def judge_if_continue(self):
         # 写完文件以后作判断
-        if self.current_page == self.max_crawl_page + 1:  # +1 是因为保存了 urls 以后，current_page 马上就加 1 了
-            self.log.info("已经爬取了 {} 页，爬虫结束。".format(self.total_page))
-            return False
-        if int(self.current_last_item_num) >= int(self.max_crawl_items):
-            self.log.info("已经爬取了 {} 条记录，爬虫结束。".format(self.current_last_item_num))
-            return False
+        if self.max_crawl_page is not None:
+            if self.current_page == self.max_crawl_page + 1:  # +1 是因为保存了 urls 以后，current_page 马上就加 1 了
+                self.log.info("已经爬取了 {} 页，爬虫因为设定了【最多爬取页数】停止。".format(self.max_crawl_page))
+                return False
+        if self.max_crawl_items is not None:
+            if int(self.current_last_item_num) >= int(self.max_crawl_items):
+                self.log.info("已经爬取了 {} 条记录，爬虫因为设置了【最多爬取条数】停止。".format(self.current_last_item_num))
+                return False
         return True
 
-    def parse_current_page(self):
+    def parse(self):
         '''
         点击了搜索按钮以后的入口
         :return:
         '''
-        # 这里要重新创建一次 BeautifulSoup ，因为验证码的出现有可能破坏原有的网页结构，所以需要重新解析
+        # "lxml" 必须指定，这是官方推荐的解释器
         soup = BeautifulSoup(self.driver.page_source, 'lxml')
         table = soup.select('.GridTableContent tr')
         # 如果当前页面上有表格，就爬取表格中的序号、标题和链接到 csv 文件中
@@ -107,7 +118,6 @@ class CnkiSpider:
             if int(html_current_page) == int(self.current_page):
                 self.save_urls(table)
                 self.current_page += 1
-
             if not self.judge_if_continue():
                 return
 
@@ -118,28 +128,32 @@ class CnkiSpider:
             if a_list:
                 next_link = a_list[-1]
                 if next_link.get_text() == '下一页':
-                    # 有下一页按钮
-                    self.log.info("当前第 {} 页，有下一页按钮。".format(self.current_page))
-                    # 注意：要将页面定位到页面底端，Selenium 才会帮我们点击按钮
-                    # 点击下一页按钮
-                    next_link = self.driver.find_element_by_css_selector('div.TitleLeftCell a:last-child')
-                    # next_link_str = next_link.get_attribute("href")
-                    next_link.click()  # 这个点击按钮有的时候可能没有生效，会重复爬取数据
-                    # 切换到主文档
-                    self.driver.switch_to.default_content()
-                    js = 'window.scrollTo(0,document.body.scrollHeight);'
-                    self.driver.execute_script(js)
-                    # 切换到子 iframe
-                    self.driver.switch_to.frame('iframeResult')
-                    # 递归调用（自己调用自己）
-                    self.parse_current_page()
+                    # 点击'下一页'按钮，并且继续爬取
+                    self.click_next_and_parse()
                 else:
-                    self.log.info('--- 没有下一页按钮，爬虫停止 ---')
+                    self.log.error("第 {} 页上没有出现\"下一页\"按钮，爬虫结束。".format(self.current_page))
         else:
             # 有可能是要求输入验证码的页面
             self.log.warn('------ 走到这里很可能是遇到验证码了，请回到网页查看，并在控制台中输入验证码。 ------')
             # 用户手动输入验证码，实现翻页
             self.input_captcha_by_ourself()
+
+    def click_next_and_parse(self):
+        # 有下一页按钮
+        self.log.info("当前第 {} 页，有下一页按钮。".format(self.current_page - 1))  # 这里 -1 也是因为有一个偏差
+        # 注意：要将页面定位到页面底端，Selenium 才会帮我们点击按钮
+        # 点击下一页按钮
+        next_link = self.driver.find_element_by_css_selector('div.TitleLeftCell a:last-child')
+        # next_link_str = next_link.get_attribute("href")
+        next_link.click()  # 这个点击按钮有的时候可能没有生效，会重复爬取数据
+        # 切换到主文档
+        self.driver.switch_to.default_content()
+        js = 'window.scrollTo(0,document.body.scrollHeight);'
+        self.driver.execute_script(js)
+        # 切换到子 iframe
+        self.driver.switch_to.frame('iframeResult')
+        # 递归调用（自己调用自己）
+        self.parse()
 
     def input_captcha_by_ourself(self):
         '''
@@ -162,8 +176,8 @@ class CnkiSpider:
             check_code_input.send_keys(check_code)
             submit_button = self.driver.find_element_by_xpath("//input[@type='button']")
             submit_button.click()
-            # 如果验证码出错，我们还会看到要求输入验证码的页面，逻辑包含在 parse_current_page 中了
-            self.parse_current_page()
+            # 如果验证码出错，我们还会看到要求输入验证码的页面，逻辑包含在 parse 中了
+            self.parse()
         else:
             # 如果出现下面这行日志，就表示代码写得有问题
             self.log.warn('------ 没有验证码输入框，也没有表格，程序错误，退出。 ------')
@@ -175,22 +189,28 @@ class CnkiSpider:
         # 第 2 步：填写网页上的搜索条件
         self.select_fill_condition()
         # 第 3 步：如果有下一页按钮，则点击下一页按钮，重复执行第 3 步和第 4 步
-        # crawl_next_page 方法是一个递归方法，即自己调用自己，递归结束的条件是页面上没有"下一页"按钮
-        self.parse_current_page()
+        # parse 方法是一个递归方法，即自己调用自己，递归结束的条件是页面上没有"下一页"按钮，或者满足爬取的最多页数和最多条数，爬虫停止
+        self.parse()
         self.driver.close()
 
     @staticmethod
     def handle_title(title):
+        '''
+        去掉标题中的空行，这样能保证一条数据保存在 csv 文件中的一行内
+        :param title:
+        :return:
+        '''
         return title.replace('\n', '').replace(' ', '')
 
     @staticmethod
     def handle_url(url):
-        # 可以考虑使用 url 拼接的方法
         return "http://kns.cnki.net/KCMS" + url[4:]
 
 
 if __name__ == '__main__':
-    # 起始的 url
+    # root_url: 起始的 url
+    # max_crawl_page: 最多爬取的页码数
+    # max_crawl_items: 最多爬取的数据条数
     root_url = 'http://kns.cnki.net/kns/brief/result.aspx?dbprefix=CCND'
-    cnkiSpider = CnkiSpider(root_url)
+    cnkiSpider = CnkiSpider(root_url=root_url, max_crawl_page=None, max_crawl_items=222)
     cnkiSpider.crawl()
