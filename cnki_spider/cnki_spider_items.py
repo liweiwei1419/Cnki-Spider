@@ -151,5 +151,6 @@ class CnkiSpiderItems:
 
 if __name__ == '__main__':
     # 可以换成无界面的浏览器，可能更快一些
-    cnkiSpiderItems = CnkiSpiderItems(file_name='urls.csv', start_num=300, end_num=500)
+    today = datetime.date.today().strftime('%Y-%m-%d')
+    cnkiSpiderItems = CnkiSpiderItems(file_name='cnki_urls_{}.csv'.format(today), start_num=300, end_num=500)
     cnkiSpiderItems.crawl_items()
