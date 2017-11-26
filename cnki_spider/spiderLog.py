@@ -5,12 +5,18 @@ import sys
 
 
 class SpiderLog:
+    def _get_log_path(self):
+        file_path = sys.argv[0]
+        divide_index = file_path.rindex('/')
+        log_path = file_path[:divide_index] + '/logs/' + file_path[file_path.rindex('/') + 1:-3] + '.log'
+        return log_path
+
     def __init__(self):
         self.user = getpass.getuser()
         self.logger = logging.getLogger(self.user)
         self.logger.setLevel(logging.DEBUG)
 
-        logFile = sys.argv[0][0:-3] + '.log'
+        logFile = self._get_log_path()
         formatter = logging.Formatter('%(asctime)-12s %(levelname)-8s %(name)-10s %(message)-12s')
 
         logHand = logging.FileHandler(logFile, encoding='utf8')
@@ -32,7 +38,7 @@ class SpiderLog:
         self.logger.info(msg)
 
     def warn(self, msg):
-        self.logger.warn(msg)
+        self.logger.warning(msg)
 
     def error(self, msg):
         self.logger.error(msg)

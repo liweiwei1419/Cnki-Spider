@@ -110,7 +110,7 @@ class CnkiSpiderItems:
             newspaper_level = ''
         try:
             # 12 报纸网址
-            newspaper_url = soup.select('.sourinfo a[target="kcmstarget"].href')[1].text
+            newspaper_url = soup.select('.sourinfo a[target="kcmstarget"]')[1].text
         except Exception:
             newspaper_url = ''
             # 13 作者（要考虑到有多个作者的情况）
