@@ -11,9 +11,11 @@ class CnkiSpiderItems:
     def __init__(self, file_name, start_num, end_num):
         self.log = SpiderLog()
         # 无界面浏览器
-        self.driver = webdriver.PhantomJS(executable_path='/Users/liwei/phantomjs-2.1.1-macosx/bin/phantomjs')
+        # self.driver = webdriver.PhantomJS(executable_path='/Users/liwei/phantomjs-2.1.1-macosx/bin/phantomjs')
+        # self.driver = webdriver.PhantomJS(executable_path='C:\\liwei\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
         # 有界面浏览器
         # self.driver = webdriver.Firefox()
+        self.driver = webdriver.Firefox(executable_path="C:\\liwei\\geckodriver-v0.19.1-win64\\geckodriver.exe")
         self.start_num = start_num
         self.end_num = end_num
         self.file_name = file_name
@@ -137,8 +139,8 @@ class CnkiSpiderItems:
         line.extend(line_tuple)
         self.container.append(line)
         arrive_end = int(self.end_num) == int(index)
-        if len(self.container) % 5 == 0 or arrive_end:
-            with open('output.csv', 'a', encoding='utf-8') as fw:
+        if len(self.container) % 10 == 0 or arrive_end:
+            with open('output.csv', 'a', newline='', encoding='utf-8') as fw:
                 writer = csv.writer(fw)
                 for item in self.container:
                     writer.writerow(item)
@@ -152,5 +154,5 @@ class CnkiSpiderItems:
 if __name__ == '__main__':
     # 可以换成无界面的浏览器，可能更快一些
     today = datetime.date.today().strftime('%Y-%m-%d')
-    cnkiSpiderItems = CnkiSpiderItems(file_name='cnki_urls_{}.csv'.format(today), start_num=300, end_num=500)
+    cnkiSpiderItems = CnkiSpiderItems(file_name='papers_urls_{}.csv'.format(today), start_num=2800, end_num=6000)
     cnkiSpiderItems.crawl_items()

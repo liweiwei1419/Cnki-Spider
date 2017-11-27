@@ -31,7 +31,7 @@ class CnkiSpider:
         # self.driver = webdriver.Chrome(executable_path='/Users/liwei/chromedriver')
         # 设置 Firefox 补丁文件的路径
         # 本类中其它方法要使用 driver 的时候，可以通过 self.driver 进行调用
-        self.driver = webdriver.Firefox(executable_path="/Users/liwei/geckodriver")
+        self.driver = webdriver.Firefox(executable_path="C:\\liwei\\geckodriver-v0.19.1-win64\\geckodriver.exe")
         # 让浏览器访问网页
         self.driver.get(url=root_url)
         # 让窗口最大化，使得驱动能够"看到"更多的内容
@@ -77,7 +77,7 @@ class CnkiSpider:
     def save_urls(self, table):
         rows = table[1:]
         # 'a' 表示追加，这里明显应该使用追加的方式保存数据
-        with open(self.file_name, 'a', encoding='utf-8') as fw:
+        with open(self.file_name, 'a', encoding='utf-8', newline='') as fw:
             writer = csv.writer(fw)
             for row in rows:
                 order_number = row.select('td')[0].text
@@ -212,5 +212,5 @@ if __name__ == '__main__':
     # max_crawl_page: 最多爬取的页码数
     # max_crawl_items: 最多爬取的数据条数
     root_url = 'http://kns.cnki.net/kns/brief/result.aspx?dbprefix=CCND'
-    cnkiSpider = CnkiSpider(root_url=root_url, max_crawl_page=None, max_crawl_items=222)
+    cnkiSpider = CnkiSpider(root_url=root_url, max_crawl_page=None, max_crawl_items=None)
     cnkiSpider.crawl()
