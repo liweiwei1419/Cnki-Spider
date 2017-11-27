@@ -1,4 +1,0 @@
-2017-11-24 15:40:10,842 INFO     root       info message
-2017-11-24 15:40:10,842 ERROR    root       error message
-2017-11-24 15:40:10,842 INFO     root       info message
-2017-11-24 15:40:10,842 INFO     root       info message
