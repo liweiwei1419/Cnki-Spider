@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import Select
 
 from cnki_spider.spiderLog import SpiderLog
 import datetime
+from cnki_spider import utils
 
 
 class CnkiSpider:
@@ -34,7 +35,7 @@ class CnkiSpider:
         # 设置 Firefox 补丁文件的路径
         # 本类中其它方法要使用 driver 的时候，可以通过 self.driver 进行调用
         # self.driver = webdriver.Firefox(executable_path="C:\\liwei\\geckodriver-v0.19.1-win64\\geckodriver.exe")
-        self.driver = webdriver.Firefox(executable_path='/Users/liwei/geckodriver')
+        self.driver = webdriver.Firefox(executable_path=utils.Utils.get_selenium_file_path())
         # 让浏览器访问网页
         self.driver.get(url=root_url)
         # 让窗口最大化，使得驱动能够"看到"更多的内容
@@ -58,14 +59,19 @@ class CnkiSpider:
         elem1 = self.driver.find_element_by_id('txt_1_value1')
         elem1.send_keys('阿里巴巴')
 
+        # 新建一个 Select 对象，通过这个对象帮助我们操作网页中的下拉列表
+        select2 = Select(self.driver.find_element_by_id('txt_1_relation'))
+        # 选择下拉列表中显示"主题"的那一项
+        select2.select_by_visible_text("或含")
+
         # 找到特定的文本框，填写搜索条件
         elem2 = self.driver.find_element_by_id('txt_1_value2')
         elem2.send_keys('阿里')
 
         # 新建一个 Select 对象，通过这个对象帮助我们操作网页中的下拉列表
-        select2 = Select(self.driver.find_element_by_id('txt_2_sel'))
+        select3 = Select(self.driver.find_element_by_id('txt_2_sel'))
         # 选择下拉列表中显示"全文"的那一项
-        select2.select_by_visible_text("全文")
+        select3.select_by_visible_text("全文")
 
         # 找到特定的文本框，填写搜索条件
         elem3 = self.driver.find_element_by_id('txt_2_value1')
@@ -138,7 +144,13 @@ class CnkiSpider:
         # 如果当前页面上有表格，就爬取表格中的序号、标题和链接到 csv 文件中
         if table:
             # 页面上显示的当前页的页面
-            html_current_page = soup.select('table.pageBar_bottom font[class="Mark"]')[0].get_text()
+            page_links = soup.select('table.pageBar_bottom font[class="Mark"]')
+            if len(page_links) == 0:
+                self.save_urls(table)
+                # 如果第一页就显示出了所有的结果
+                self.log.info("所有的查询结果在第一页就显示完毕，一共查询到数据 {} 条。".format(self.current_last_item_num))
+                return
+            html_current_page = page_links[0].get_text()
             # 因为 Selenium 的点击链接事件有的时候会失效，
             # 所以需作判断，让页面显示的页数，也我们逻辑上应该显示的页数一致的时候，才保存页面的内容
             # 这样做是为了防止重复爬取
@@ -159,10 +171,8 @@ class CnkiSpider:
                     self.click_next_and_parse()
                 else:
                     self.log.error("第 {} 页上没有出现\"下一页\"按钮，爬虫结束。".format(self.current_page))
-            else:
-                # 如果第一页就显示出了所有的结果
-                self.log.info("所有的查询结果在第一页就显示完毕，一共查询到数据 {} 条。".format(self.current_last_item_num))
-                return
+
+
         else:
             # 有可能是要求输入验证码的页面
             self.log.warn('------ 走到这里很可能是遇到验证码了，请回到网页查看，并在控制台中输入验证码。 ------')

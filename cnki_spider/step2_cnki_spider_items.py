@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import csv
 import re
 from cnki_spider.spiderLog import SpiderLog
+from cnki_spider.utils import Utils
 
 
 class CnkiSpiderItems:
@@ -14,7 +15,7 @@ class CnkiSpiderItems:
         # self.driver = webdriver.PhantomJS(executable_path='/Users/liwei/phantomjs-2.1.1-macosx/bin/phantomjs')
         # self.driver = webdriver.PhantomJS(executable_path='C:\\liwei\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
         # 有界面浏览器
-        self.driver = webdriver.Firefox(executable_path='/Users/liwei/geckodriver')
+        self.driver = webdriver.Firefox(executable_path=Utils.get_selenium_file_path())
         # self.driver = webdriver.Firefox(executable_path="C:\\liwei\\geckodriver-v0.19.1-win64\\geckodriver.exe")
         self.start_num = start_num
         self.end_num = end_num
