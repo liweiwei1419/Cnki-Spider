@@ -17,7 +17,9 @@ class CnkiSpider:
         :param max_crawl_page: 最多爬取的页码数
         :param max_crawl_items: 最多爬取的数据条数
         '''
+        # 设置日志，可以使用 print("") 语句代替
         self.log = SpiderLog()
+        # 设置一些控制爬虫的参数
         self.current_page = 1
         self.current_last_item_num = 0
         self.max_crawl_page = max_crawl_page
@@ -31,7 +33,8 @@ class CnkiSpider:
         # self.driver = webdriver.Chrome(executable_path='/Users/liwei/chromedriver')
         # 设置 Firefox 补丁文件的路径
         # 本类中其它方法要使用 driver 的时候，可以通过 self.driver 进行调用
-        self.driver = webdriver.Firefox(executable_path="C:\\liwei\\geckodriver-v0.19.1-win64\\geckodriver.exe")
+        # self.driver = webdriver.Firefox(executable_path="C:\\liwei\\geckodriver-v0.19.1-win64\\geckodriver.exe")
+        self.driver = webdriver.Firefox(executable_path='/Users/liwei/geckodriver')
         # 让浏览器访问网页
         self.driver.get(url=root_url)
         # 让窗口最大化，使得驱动能够"看到"更多的内容
@@ -46,19 +49,40 @@ class CnkiSpider:
         :param driver:
         :return:
         '''
-        # 将检索条件下列列表 1 设置为"全文"
+        # 新建一个 Select 对象，通过这个对象帮助我们操作网页中的下拉列表
         select1 = Select(self.driver.find_element_by_id('txt_1_sel'))
-        select1.select_by_visible_text("全文")
-        # 将检索条件下列列表 2 设置为"全文"
-        select2 = Select(self.driver.find_element_by_id('txt_2_sel'))
-        select2.select_by_visible_text("全文")
-        # 分别设置 3 个文本框的内容
+        # 选择下拉列表中显示"主题"的那一项
+        select1.select_by_visible_text("主题")
+
+        # 找到特定的文本框，填写搜索条件
         elem1 = self.driver.find_element_by_id('txt_1_value1')
-        elem1.send_keys('品牌')
+        elem1.send_keys('阿里巴巴')
+
+        # 找到特定的文本框，填写搜索条件
         elem2 = self.driver.find_element_by_id('txt_1_value2')
-        elem2.send_keys('危机')
+        elem2.send_keys('阿里')
+
+        # 新建一个 Select 对象，通过这个对象帮助我们操作网页中的下拉列表
+        select2 = Select(self.driver.find_element_by_id('txt_2_sel'))
+        # 选择下拉列表中显示"全文"的那一项
+        select2.select_by_visible_text("全文")
+
+        # 找到特定的文本框，填写搜索条件
         elem3 = self.driver.find_element_by_id('txt_2_value1')
-        elem3.send_keys('联想')
+        elem3.send_keys('品牌')
+
+        # 找到新增搜索条件的按钮，并点击
+        add_condition_link = self.driver.find_element_by_css_selector("#txt_1 .aomBtn a")
+        add_condition_link.click()
+
+        # 新建一个 Select 对象，通过这个对象帮助我们操作网页中的下拉列表
+        select3 = Select(self.driver.find_element_by_id('txt_3_sel'))
+        select3.select_by_visible_text("全文")
+
+        # 找到特定的文本框，填写搜索条件
+        elem4 = self.driver.find_element_by_id('txt_3_value1')
+        elem4.send_keys('危机')
+
         # 将搜索按钮设置为焦点，并点击
         search_button = self.driver.find_element_by_id('btnSearch')
         search_button.click()
@@ -89,7 +113,10 @@ class CnkiSpider:
         self.log.info("第 {} 页的文章链接爬取成功，最后一条记录的编号是：{}。".format(self.current_page, self.current_last_item_num))
 
     def judge_if_continue(self):
-        # 写完文件以后作判断
+        '''
+        写完文件以后作判断是否继续
+        :return:
+        '''
         if self.max_crawl_page is not None:
             if self.current_page == self.max_crawl_page + 1:  # +1 是因为保存了 urls 以后，current_page 马上就加 1 了
                 self.log.info("已经爬取了 {} 页，爬虫因为设定了【最多爬取页数】停止。".format(self.max_crawl_page))
@@ -132,6 +159,10 @@ class CnkiSpider:
                     self.click_next_and_parse()
                 else:
                     self.log.error("第 {} 页上没有出现\"下一页\"按钮，爬虫结束。".format(self.current_page))
+            else:
+                # 如果第一页就显示出了所有的结果
+                self.log.info("所有的查询结果在第一页就显示完毕，一共查询到数据 {} 条。".format(self.current_last_item_num))
+                return
         else:
             # 有可能是要求输入验证码的页面
             self.log.warn('------ 走到这里很可能是遇到验证码了，请回到网页查看，并在控制台中输入验证码。 ------')

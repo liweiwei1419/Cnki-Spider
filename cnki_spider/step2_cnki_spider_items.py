@@ -14,8 +14,8 @@ class CnkiSpiderItems:
         # self.driver = webdriver.PhantomJS(executable_path='/Users/liwei/phantomjs-2.1.1-macosx/bin/phantomjs')
         # self.driver = webdriver.PhantomJS(executable_path='C:\\liwei\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
         # 有界面浏览器
-        # self.driver = webdriver.Firefox()
-        self.driver = webdriver.Firefox(executable_path="C:\\liwei\\geckodriver-v0.19.1-win64\\geckodriver.exe")
+        self.driver = webdriver.Firefox(executable_path='/Users/liwei/geckodriver')
+        # self.driver = webdriver.Firefox(executable_path="C:\\liwei\\geckodriver-v0.19.1-win64\\geckodriver.exe")
         self.start_num = start_num
         self.end_num = end_num
         self.file_name = file_name
@@ -40,6 +40,8 @@ class CnkiSpiderItems:
     def read_paper_links(self):
         with open(self.file_name, 'r', encoding='utf-8') as fr:
             paper_links = fr.readlines()
+            if self.end_num is None:
+                self.end_num = len(paper_links)
             paper_links = paper_links[self.start_num: self.end_num]
         return paper_links
 
@@ -154,5 +156,5 @@ class CnkiSpiderItems:
 if __name__ == '__main__':
     # 可以换成无界面的浏览器，可能更快一些
     today = datetime.date.today().strftime('%Y-%m-%d')
-    cnkiSpiderItems = CnkiSpiderItems(file_name='papers_urls_{}.csv'.format(today), start_num=2800, end_num=6000)
+    cnkiSpiderItems = CnkiSpiderItems(file_name='papers_urls_{}.csv'.format(today), start_num=0, end_num=None)
     cnkiSpiderItems.crawl_items()

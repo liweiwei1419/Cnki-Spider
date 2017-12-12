@@ -1,22 +1,19 @@
 # 中国知网论文列表抓取
 
-存在的问题：
-1. 日志文件应该专门放在一个文件夹里；
-2. 文件名修改
+适合学习 Python 入门的教程：
+1. 廖雪峰的 Python 教程
+2. 菜鸟教程
 
-1. Python 对字符串的处理
-2. 正则表达式
-3. 使用 Scrapy 的 Selector 和 BeautifulSoup 的选择器的不同
-4. 迭代器
-5. yield 关键字的使用
-6. 通过查看源代码来查看可以使用的 API
-7. 先把功能实现，再优化，很多细节问题会在优化的时候解决
-8. os 和 path 也是很常用的库
-9. PyCharm 增加注释与取消注释
-10. 批量删除文件
-11. os 拼凑成绝对路径
-12. 异常处理
-13. pandas 处理 excel 如何追加数据
+本爬虫练习使用到的技术
+1. 正则表达式
+正则表达式是 Python 以及各种编程语言中非常重要的知识，正则表达式的语言是通用的，功能强大，可以用于字符串的查找、替换等，在学习中应该引起重视。
+2. phantomjs、Selenium 浏览器模拟技术在爬虫中的应用
+3. 使用 BeautifulSoup 解释 HTML 网页结构
+4. os 和 path 也是很常用的库
+5. 异常处理
+6. 文件处理
+7. csv 文件的保存与读取
+8. pandas 处理 excel 如何追加数据
 
 
 CSS 选择器官方文档：
@@ -51,4 +48,9 @@ with open('test.html', 'w', encoding='utf-8') as fw:
 
 参考资料：selenium之 定位以及切换frame（iframe）
 http://blog.csdn.net/huilan_same/article/details/52200586
+
+
+存在的问题：
+1. 日志文件应该专门放在一个文件夹里；
+2. 文件名修改
 
